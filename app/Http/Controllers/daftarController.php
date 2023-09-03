@@ -12,6 +12,20 @@ class daftarController extends Controller
     public function index(){
         return view('daftar', [
             "title" => "Daftar",
+            "data_ortu" => Parents::all(), // ngambil data ortu
+        ]);
+    }
+
+    public function addParent(){
+        return view('add-parent', [
+            "title" => "Add Parent",
+        ]);
+    }
+
+    public function addInfant($parent_id){
+        return view("add-infant", [
+            "title" => "Add Infant",
+            "infant" => Infant::firstWhere("parent_id", $parent_id) // ngambil data bayi
         ]);
     }
 

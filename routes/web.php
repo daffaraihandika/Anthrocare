@@ -21,7 +21,9 @@ Route::get('/', function () {
 });
 
 Route::get('/daftar', [daftarController::class, 'index']);
-Route::get('/daftars', [daftarController::class, 'getDaftar']);
+Route::get('/daftar/add-parent', [daftarController::class, 'addParent']);
+Route::get('/daftar/add-infant/{infant:parent_id}', [daftarController::class, 'addInfant']);
+// Route::get('/daftars', [daftarController::class, 'getDaftar']);
 
 Route::post('/daftar', [daftarController::class, 'store']);
 
