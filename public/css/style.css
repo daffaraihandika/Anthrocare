@@ -1,0 +1,31 @@
+body{
+    background-color: bisque;
+    overflow-x: hidden;
+    height: auto;
+}
+
+.content{
+    padding: 30px;
+    padding-bottom: 0;
+}
+
+.daftar{
+    margin-top: 3rem;
+}
+
+.daftar .title{
+    margin-bottom: 1rem;
+}
+
+.daftar input{
+    width: 80%;
+}
+
+.daftar .input-group{
+    width: 80%;
+}
+
+.daftar .btn-daftarSubmit{
+    margin-top: 15px;
+    width: 200px;
+}
