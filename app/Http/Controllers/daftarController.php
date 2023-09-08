@@ -10,6 +10,13 @@ class daftarController extends Controller
 {
     //
     public function index(){
+        $data_ortu = Parents::orderBy('id', 'asc')->get(); // mengambil semua data ortu
+
+        // return [
+        //     "status" => 1,
+        //     "data_ortu" => $data_ortu,
+        //     "msg" => "berhasill"
+        // ];
         return view('daftar/index', [
             "title" => "Daftar",
             "data_ortu" => Parents::orderBy('id', 'asc')->get(), // mengambil semua data ortu

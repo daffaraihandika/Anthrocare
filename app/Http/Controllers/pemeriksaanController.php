@@ -20,5 +20,5 @@ class pemeriksaanController extends Controller
         return view('pemeriksaan/index', compact('title', 'data_bayi'));
     }
 
-    
+
 }
