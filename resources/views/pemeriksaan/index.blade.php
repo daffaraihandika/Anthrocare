@@ -26,7 +26,7 @@
                 <td>{{ $item->parents->nama_orangtua }}</td>
                 <td>{{ $item->parents->no_ktp }}</td>
                 <td>
-                    <a href="" class="btn mb-2 mb-xl-0">
+                    <a href="{{ url('pemeriksaan/'.$item->id) }}" class="btn mb-2 mb-xl-0">
                         <button class="btn btn-primary">
                             Periksa
                         </button>

@@ -20,5 +20,15 @@ class pemeriksaanController extends Controller
         return view('pemeriksaan/index', compact('title', 'data_bayi'));
     }
 
+    public function getInfant($id){
+        $title = "Pemeriksaan";
+        $identitas_bayi = Infant::with('parents')->get();
+
+        return [
+            "status" => 1,
+            "data" => $identitas_bayi,
+            "msg" => "berhasill"
+        ];
+    }
 
 }
