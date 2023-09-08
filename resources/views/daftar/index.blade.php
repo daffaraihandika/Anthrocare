@@ -2,7 +2,6 @@
 
 @section('container')
 <h1>Daftar Orangtua</h1>
-
 <div class="text-end">
     <h3>
         <a href="{{ url('daftar/add-parent') }}">
