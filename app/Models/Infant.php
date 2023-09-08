@@ -12,6 +12,6 @@ class Infant extends Model
     protected $guarded = ["id"];
 
     public function parents(){
-        return $this->belongsTo(Parents::class, 'parent_id');
+        return $this->belongsTo('App\Models\Parents', 'id_parent', 'id');
     }
 }

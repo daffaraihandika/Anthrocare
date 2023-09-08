@@ -17,28 +17,64 @@ class daftarController extends Controller
     }
 
     public function showAddParent(){
-        return 'halaman add parent';
+        return view('daftar/addParent',[
+            "title" => "Add Parent",
+        ]);
     }
 
-    public function addParent(){
-        // return view('add-parent', [
-        //     "title" => "Add Parent",
-        // ]);
+    public function addParent(Request $request){
+        // Validate
 
-        return 'untuk submit add parent pake method post';
+
+        // Input to Database
+        $data = [
+            'nama_orangtua' => $request->nama_orangtua,
+            'tgl_lahir_orangtua' => $request->tgl_lahir_orangtua,
+            'alamat' => $request->alamat,
+            'no_ktp' => $request->no_ktp,
+            'gol_darah' => $request->gol_darah,
+            'no_telp' => $request->no_telp
+        ];
+
+        Parents::Create($data);
+
+        return redirect()->to('daftar')->with("succes", "Berhasil Menambahkan Data Orang Tua");
     }
 
     public function showAddInfant($parent_id){
-        $namaOrangTua = Parents::where("id", $parent_id)->pluck('nama_orangtua'); // ngambil data nama orang tua
+        $namaOrangTua = Parents::where("id", $parent_id)->pluck('id')->first(); // ngambil data nama orang tua
         $title = "Add Infant";
         return view("daftar/addInfant", compact('title', 'namaOrangTua'));
-
         // return 'halaman add infant dari parent id = ' .$parent_id;
     }
 
-    public function addInfant($parent_id){
-        return 'untuk submit add infant pake method post';
-    }
+    public function addInfant(Request $request){
+        // Validate data anak sesuai dengan kebutuhan Anda
+        // $dataAnak = [
+        //     'parent_id' => $parent_id, // Mengisi parent_id berdasarkan parameter yang diberikan
+        //     'nama_anak' => $request->nama_anak, // Misalnya, nama anak diambil dari input nama_anak
+        //     // tambahkan kolom-kolom lain sesuai dengan kebutuhan
+        // ];
+    
+        // $id_parent = Parents::where("id", $parent_id)->pluck('id');
+
+        // Simpan data anak ke dalam database
+        // Infant::create($dataAnak);
+    
+        // Redirect ke halaman yang sesuai atau berikan respons sesuai kebutuhan Anda
+        // return redirect()->route('daftar.index')->with("success", "Berhasil Menambahkan Data Anak");        
+    
+        $data = $request->all();
+
+        Infant::create($data);
+
+        return [
+            "status" => 1,
+            "data" => $data,
+            "msg" => "Data Kategori Donasi created successfully"
+        ];    
+        // return 'post add infant dari parent id = ' .$parent_id;
+    }    
 
     // public function getDaftar(){
     //     $infants = Infant::all();

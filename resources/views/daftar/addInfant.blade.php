@@ -3,7 +3,7 @@
 @section('container')
     <h1>Daftar Balita</h1>
 
-    <form action="/daftar" method="POST">
+    <form action="" method="POST">
         @csrf
         <div class="row daftar">
 
@@ -14,9 +14,9 @@
                     <label for="nama_bayi" class="form-label">Nama</label>
                     <input type="text" class="form-control" id="nama_bayi" aria-describedby="nama" name="nama_bayi">
                 </div>
-                <div class="mb-3">
-                    <label for="nama_orangtua" class="form-label">Nama Orang Tua</label>
-                    <input type="text" class="form-control" id="nama_orangtua" aria-describedby="nama" name="nama_orangtua" readonly value="{{ $namaOrangTua[0] }}">
+                <div class="mb-3 d-none">
+                    <label for="id_parent" class="form-label">Nama Orang Tua</label>
+                    <input type="text" class="form-control" id="id_parent" aria-describedby="nama" name="id_parent" readonly value="{{ $namaOrangTua }}">
                 </div>
                 <div class="mb-3">
                     <label for="tgl_lahir_bayi" class="form-label">Tanggal Lahir</label>

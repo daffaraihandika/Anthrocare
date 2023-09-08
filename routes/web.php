@@ -22,9 +22,9 @@ Route::get('/', function () {
 
 Route::get('/daftar', [daftarController::class, 'index']); // tampilan tabel isinya data orangtua, di row nya ada aksi buat daftarin anak, di atas tabelnya ada tambah baru buat orangtua yang belum pernah terdaftar, bagusnya di atas tabelnya ada fitur search biar gausah nyari ortunya satu satu
 Route::get('/daftar/add-parent', [daftarController::class, 'showAddParent']); // tampilan form buat ngisi biodata orangtua
-Route::post('/daftar/add-parent', [daftarController::class, 'addParent']); // submit untuk mendaftarkan orangtua baru
-Route::get('/daftar/add-infant/{infant:parent_id}', [daftarController::class, 'showAddInfant']); // tampilan form buat mendaftarkan anak baru, nanti parent_id nya diisi sama id_parent
-Route::post('/daftar/add-infant/{infant:parent_id}', [daftarController::class, 'addInfant']); // submit untuk mendaftarkan anak baru
+Route::post('/daftar/add-parent', [DaftarController::class, 'addParent'])->name('daftar.add-parent'); // submit untuk mendaftarkan orangtua baru
+Route::get('/daftar/add-infant/{infant:parent_id}', [daftarController::class, 'showAddInfant'])->name('daftar.show-infant'); // tampilan form buat mendaftarkan anak baru, nanti parent_id nya diisi sama id_parent
+Route::post('/daftar/add-infant/{infant:parent_id}', [daftarController::class, 'addInfant'])->name('daftar.add-infant'); // submit untuk mendaftarkan anak baru
 
 
 // Route::get('/daftars', [daftarController::class, 'getDaftar']);

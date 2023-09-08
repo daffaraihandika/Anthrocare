@@ -12,6 +12,6 @@ class Parents extends Model
     protected $guarded = ["id"];
 
     public function infant(){
-        return $this->hasMany(Infant::class, 'parent_id');
+        return $this->hasMany('App\Models\Infant');
     }
 }

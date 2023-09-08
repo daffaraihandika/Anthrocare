@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('infants', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('parent_id');
+            $table->unsignedBigInteger('id_parent');
             $table->string('nama_bayi');
             $table->date('tgl_lahir_bayi');
             $table->enum('jenis_kelamin', ['Laki - Laki', 'Perempuan']);
@@ -21,6 +21,7 @@ return new class extends Migration
             $table->double('tinggi_lahir', 8, 2);
             $table->double('berat_lahir', 8, 2);
             $table->timestamps();
+            $table->foreign('id_parent')->references('id')->on('parents');
         });
     }
 
