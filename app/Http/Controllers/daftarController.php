@@ -68,11 +68,13 @@ class daftarController extends Controller
 
         Infant::create($data);
 
-        return [
-            "status" => 1,
-            "data" => $data,
-            "msg" => "Data Kategori Donasi created successfully"
-        ];    
+        // return [
+        //     "status" => 1,
+        //     "data" => $data,
+        //     "msg" => "Data Kategori Donasi created successfully"
+        // ];    
+
+        return redirect()->to('daftar')->with("succes", "Berhasil Menambahkan Data Orang Tua");
         // return 'post add infant dari parent id = ' .$parent_id;
     }    
 
