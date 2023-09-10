@@ -17,7 +17,7 @@
             </li>
             <li class="nav-item">
                 <a href="/pemeriksaan" class="nav-link text-white {{ $title === 'Pemeriksaan' ? 'active' : '' }}">
-                    Data Balita
+                    Pemeriksaan Balita
                 </a>
             </li>
             <li class="nav-item">
