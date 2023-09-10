@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('pemeriksaan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_infant');
-            $table->date('tgl_pemeriksaan');
+            $table->unsignedBigInteger('id_infant')->nullable();
+            $table->date('tgl_pemeriksaan')->nullable();
             $table->double('zscore', 8, 2);
             $table->double('suhu', 8, 2);
             $table->double('berat', 8, 2);
             $table->double('panjang_badan', 8, 2);
-            $table->enum('kondisi', ['tinggi', 'normal', 'stunted', 'severely stunted']);
+            $table->enum('kondisi', ['tinggi', 'normal', 'stunted', 'severely stunted'])->nullable();
             $table->foreign('id_infant')->references('id')->on('infants');
             $table->timestamps();
         });
