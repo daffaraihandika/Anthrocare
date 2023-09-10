@@ -70,6 +70,6 @@ class daftarController extends Controller
         //     "msg" => "Data Kategori Donasi created successfully"
         // ];    
 
-        return redirect()->to('daftar')->with("succes", "Berhasil Menambahkan Data Orang Tua");
+        return redirect()->to('pemeriksaan')->with("succes", "Berhasil Menambahkan Data Bayi");
     }    
 }
