@@ -13,7 +13,7 @@ class hasilPemeriksaanController extends Controller
     public function index(){
         $title = 'Hasil Pemeriksaan';
         $data_bayi = Infant::with('parents')->get();
-        return view('pemeriksaan/indexPemeriksaan', compact('title', 'data_bayi'));
+        return view('hasil pemeriksaan/indexHasilPemeriksaan', compact('title', 'data_bayi'));
     }
 
     public function getInfant($id){
@@ -40,7 +40,7 @@ class hasilPemeriksaanController extends Controller
         ->first();
 
         // return $last_inspection;
-        return view('pemeriksaan/periksaInfant', compact('title', 'identitas_bayi', 'last_inspection', 'all_inspection'));
+        return view('hasil pemeriksaan/detail', compact('title', 'identitas_bayi', 'last_inspection', 'all_inspection'));
     }
 
     public function calculateAgeInMonths($birthdate) {

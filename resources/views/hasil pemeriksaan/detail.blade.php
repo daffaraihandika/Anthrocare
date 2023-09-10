@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col">No Akte Bayi : </div>
-            <div class="col">{{ }}</div>
+            <div class="col"></div>
         </div>
         <div class="row">
             <div class="col">Umur : </div>
