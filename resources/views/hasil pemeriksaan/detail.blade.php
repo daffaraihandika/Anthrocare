@@ -1,21 +1,21 @@
 @extends('layouts.main')
 
 @section('container')
-<h1>Hasil Pemeriksaan</h1>
+<h1>Hasil Pemeriksaan Detail Bayi</h1>
 
 <div class="row">
     <div class="col-md-8">
         <div class="row">
             <div class="col">Nama Bayi : </div>
-            <div class="col">{{  }}</div>
+            <div class="col"></div>
         </div>
         <div class="row">
             <div class="col">Tanggal Lahir Bayi : </div>
-            <div class="col">{{  }}</div>
+            <div class="col"></div>
         </div>
         <div class="row">
             <div class="col">Jenis Kelamin Bayi : </div>
-            <div class="col">{{  }}</div>
+            <div class="col"></div>
         </div>
         <div class="row">
             <div class="col">No Akte Bayi : </div>
@@ -23,15 +23,15 @@
         </div>
         <div class="row">
             <div class="col">Umur : </div>
-            <div class="col">{{  }} Bulan</div>
+            <div class="col"> Bulan</div>
         </div>
         <div class="row">
             <div class="col">Nama Orang Tua : </div>
-            <div class="col">{{  }}</div>
+            <div class="col"></div>
         </div>
         <div class="row">
             <div class="col">Alamat Orang Tua : </div>
-            <div class="col">{{  }}</div>
+            <div class="col"></div>
         </div>
     </div>
 </div>
@@ -53,12 +53,12 @@ panjang badan, zscore, kondisi --}}
     </thead>
     <tbody>
         <tr class="text-center">
-            <td>{{  }}</td>
-            <td>{{  }} C</td>
-            <td>{{  }} Cm</td>
-            <td>{{  }} Kg</td>
-            <td>{{  }}</td>
-            <td>{{  }}</td>
+            <td></td>
+            <td> C</td>
+            <td> Cm</td>
+            <td> Kg</td>
+            <td></td>
+            <td></td>
         </tr>
     </tbody>
 </table>
@@ -77,16 +77,16 @@ panjang badan, zscore, kondisi --}}
         </tr>
     </thead>
     <tbody>
-        @foreach ()
+        {{-- @foreach () --}}
         <tr class="text-center">
-            <td>{{  }}</td>
-            <td>{{  }} C</td>
-            <td>{{  }} Cm</td>
-            <td>{{  }} Kg</td>
-            <td>{{  }}</td>
-            <td>{{  }}</td>
+            <td></td>
+            <td> C</td>
+            <td> Cm</td>
+            <td> Kg</td>
+            <td></td>
+            <td></td>
         </tr>
-        @endforeach
+        {{-- @endforeach --}}
     </tbody>
 </table>
 

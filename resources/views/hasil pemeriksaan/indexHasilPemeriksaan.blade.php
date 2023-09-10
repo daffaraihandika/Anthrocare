@@ -22,17 +22,17 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($data_bayi as $item)
+        {{-- @foreach ($data_bayi as $item) --}}
         <tr class="text-center">
             <td>{{ $loop->iteration }}</td>
-            <td>{{  }}</td>
-            <td>{{  }}</td>
-            <td>{{  }}</td>
-            <td>{{  }}</td>
-            <td>{{  }}</td>
-            <td>{{  }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td>
-                <a href="{{  }}" class="btn mb-2 mb-xl-0">
+                <a href="" class="btn mb-2 mb-xl-0">
                     <button class="btn btn-primary">
                         Detail
                     </button>
@@ -42,7 +42,7 @@
                 </a>
             </td>
         </tr>
-        @endforeach
+        {{-- @endforeach --}}
     </tbody>
 </table>
 
