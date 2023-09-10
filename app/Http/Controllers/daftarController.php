@@ -17,7 +17,7 @@ class daftarController extends Controller
         //     "data_ortu" => $data_ortu,
         //     "msg" => "berhasill"
         // ];
-        return view('daftar/index', [
+        return view('daftar/indexDaftar', [
             "title" => "Daftar",
             "data_ortu" => Parents::orderBy('id', 'asc')->get(), // mengambil semua data ortu
         ]);

@@ -18,7 +18,7 @@ class pemeriksaanController extends Controller
         //     "data" => $data_bayi,
         //     "msg" => "berhasillll"
         // ];
-        return view('pemeriksaan/index', compact('title', 'data_bayi'));
+        return view('pemeriksaan/indexPemeriksaan', compact('title', 'data_bayi'));
     }
 
     public function getInfant($id){
@@ -33,7 +33,8 @@ class pemeriksaanController extends Controller
             return $bayi;
         });
 
-        return $identitas_bayi;
+        // return $identitas_bayi;
+        return view('pemeriksaan/periksaInfant', compact('title', 'identitas_bayi'));
     }
 
     public function calculateAgeInMonths($birthdate) {

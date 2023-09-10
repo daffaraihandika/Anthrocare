@@ -7,7 +7,7 @@
         <a href="{{ url('daftar/add-parent') }}">
             <button class="btn btn-primary">
                 <i class="bi bi-plus-square-fill"></i>
-                Add Parent
+                Tambah Orang Tua
             </button>
         </a>
     </h3>
