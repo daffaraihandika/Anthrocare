@@ -60,16 +60,9 @@ class daftarController extends Controller
         // insert ke database
         $data = $request->all();
 
-        Infant::create($data);
+        $infant = Infant::create($data);
 
-        // return ke json
-
-        // return [
-        //     "status" => 1,
-        //     "data" => $data,
-        //     "msg" => "Data Kategori Donasi created successfully"
-        // ];    
-
-        return redirect()->to('pemeriksaan')->with("succes", "Berhasil Menambahkan Data Bayi");
+        $infantId = $infant->id;
+        return redirect()->to('pemeriksaan/periksaInfant/'.$infantId)->with("succes", "Berhasil Menambahkan Data Bayi");
     }    
 }
