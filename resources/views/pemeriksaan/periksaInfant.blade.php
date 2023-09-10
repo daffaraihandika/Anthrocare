@@ -38,25 +38,29 @@
     </div>
 </div>
 <br>
-<form action="{{ route()}}" method="POST">
+<form action="{{ route('pemeriksaan.periksaInfant') }}" method="POST">
     @csrf
     <div class="row">
         <div class="col-md-7">
-            <div class="mb-3">
-                <label for="" class="form-label">Berat Badan</label>
-                <input type="text" class="form-control" id="" aria-describedby="" name="">
+            <div class="mb-3 d-none">
+                <label for="id_infant" class="form-label">Id Bayi</label>
+                <input type="text" class="form-control" id="id_infant" aria-describedby="nama" name="id_infant" readonly value="{{ $identitas_bayi[0]->id }}">
             </div>
             <div class="mb-3">
-                <label for="" class="form-label">Panjang Badan</label>
-                <input type="text" class="form-control" id="" aria-describedby="" name="">
+                <label for="berat" class="form-label">Berat Badan</label>
+                <input type="text" class="form-control" id="berat" aria-describedby="" name="berat">
             </div>
             <div class="mb-3">
-                <label for="" class="form-label">Suhu</label>
-                <input type="text" class="form-control" id="" aria-describedby="" name="">
+                <label for="panjang_badan" class="form-label">Panjang Badan</label>
+                <input type="text" class="form-control" id="panjang_badan" aria-describedby="" name="panjang_badan">
             </div>
             <div class="mb-3">
-                <label for="" class="form-label">Z-Score</label>
-                <input type="text" class="form-control" id="" aria-describedby="" name="">
+                <label for="suhu" class="form-label">Suhu</label>
+                <input type="text" class="form-control" id="suhu" aria-describedby="" name="suhu">
+            </div>
+            <div class="mb-3">
+                <label for="zscore" class="form-label">Z-Score</label>
+                <input type="text" class="form-control" id="zscore" aria-describedby="" name="zscore">
             </div>
         </div>
         <div class="mb-3">

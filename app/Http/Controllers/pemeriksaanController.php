@@ -54,11 +54,23 @@ class pemeriksaanController extends Controller
     // method untuk tombol submit
     public function createCheckupInfant(Request $request){
         // disiniii
-            // $data = $request->all();
+            $data = $request->all();
+            $data['tgl_pemeriksaan'] = now();
 
-            // Pemeriksaan::create($data);
-            // // return $data;
+            if($data['zscore'] > 2){
+                $data['kondisi'] = 'tinggi';
+            }else if($data['zscore'] <= 2 && $data['zscore'] >= -2){
+                $data['kondisi'] = 'normal';
+            }else if($data['zscore'] < -2 && $data['zscore'] >= -3){
+                $data['kondisi'] = 'stunted';
+            }else if($data['zscore'] < -3){
+                $data['kondisi'] = 'severely stunted';
+            }
+
+            Pemeriksaan::create($data);
+            // return $data;
             // return redirect()->to('pemeriksaan')->with("succes", "Berhasil Menambahkan Data Orang Tua");
+            return $data;
     }
     
 }
