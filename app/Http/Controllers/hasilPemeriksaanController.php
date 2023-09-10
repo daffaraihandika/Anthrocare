@@ -39,8 +39,8 @@ class hasilPemeriksaanController extends Controller
         ->orderBy('pemeriksaan.tgl_pemeriksaan', 'desc')
         ->first();
 
-        return $all_inspection;
-        // return view('hasil pemeriksaan/detail', compact('title', 'identitas_bayi', 'last_inspection', 'all_inspection'));
+        // return $last_inspection;
+        return view('hasil pemeriksaan/detail', compact('title', 'identitas_bayi', 'last_inspection', 'all_inspection'));
     }
 
     public function calculateAgeInMonths($birthdate) {

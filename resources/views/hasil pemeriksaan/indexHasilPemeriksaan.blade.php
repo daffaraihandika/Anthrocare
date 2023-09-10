@@ -25,20 +25,17 @@
         @foreach ($data_bayi as $item)
         <tr class="text-center">
             <td>{{ $loop->iteration }}</td>
-            <td>{{  }}</td>
-            <td>{{  }}</td>
-            <td>{{  }}</td>
-            <td>{{  }}</td>
-            <td>{{  }}</td>
-            <td>{{  }}</td>
+            <td>{{$item->nama_bayi}}</td>
+            <td>{{$item->no_akte_bayi}}</td>
+            <td>{{$item->tgl_lahir_bayi}}</td>
+            <td>{{$item->jenis_kelamin}}</td>
+            <td>{{ $item->parents->nama_orangtua }}</td>
+            <td>{{ $item->parents->no_ktp }}</td>
             <td>
-                <a href="{{  }}" class="btn mb-2 mb-xl-0">
+                <a href="{{ url('hasilPemeriksaan/detail/'.$item->id) }}" class="btn mb-2 mb-xl-0">
                     <button class="btn btn-primary">
                         Detail
                     </button>
-                </a>
-                <a href="" class="btn mb-2 mb-xl-0">
-                    <i class="bi bi-archive-fill text-danger"></i>
                 </a>
             </td>
         </tr>
