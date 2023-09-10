@@ -59,6 +59,9 @@
                 <input type="text" class="form-control" id="" aria-describedby="" name="">
             </div>
         </div>
+        <div class="mb-3">
+            <button class="btn btn-primary btn-daftarSubmit" type="submit">Submit</button>
+        </div>
         <div class="col-md-5"></div>
     </div>
 </form>
@@ -72,7 +75,9 @@
 - umur (konversi dari tgl lahir)
 - nama orangtua -->
 
+
 <!-- berat badan
 panjang badan
 suhu
 z-score -->
+<!-- si form na ka table pemeriksaan -->
