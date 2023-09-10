@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\daftarController;
+use App\Http\Controllers\hasilPemeriksaanController;
 use App\Http\Controllers\pemeriksaanController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,9 @@ Route::get('/pemeriksaan', [pemeriksaanController::class, 'index']); // menampil
 Route::get('/pemeriksaan/periksaInfant/{infant:id}', [pemeriksaanController::class, 'getInfant']); // menampilkan tampilan pemeriksaan bayi, terdapat identitas bayi, tombol get data, input field bb,tb,suhu,z-score,btnSubmit, di pinggirnya ada informasi mengenai status kondisi bayi
 Route::post('/pemeriksaan/periksaInfant/', [pemeriksaanController::class, 'createCheckupInfant'])->name('pemeriksaan.periksaInfant'); // untuk submit, dan memasukkan data ke tabel pemeriksaan
 
+// Hasil Pemeriksaan routes
+Route::get('/hasilPemeriksaan', [hasilPemeriksaanController::class, 'index']);
+Route::get('/hasilPemeriksaan/detail/{infant:id}', [hasilPemeriksaanController::class, 'getInfant']);
 
 
 // Route::get('/daftars', [daftarController::class, 'getDaftar']);
