@@ -50,5 +50,8 @@ class pemeriksaanController extends Controller
     // method untuk tombol send
 
     // method untuk tombol submit
+    public function createCheckupInfant(Request $request){
+        
+    }
     
 }
