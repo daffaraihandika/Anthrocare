@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Infant;
 use App\Models\Parents;
+use App\Models\Pemeriksaan;
 use Carbon\Carbon;
 
 class pemeriksaanController extends Controller
@@ -51,5 +52,13 @@ class pemeriksaanController extends Controller
     // method untuk tombol send
 
     // method untuk tombol submit
+    public function createCheckupInfant(Request $request){
+        // disiniii
+            // $data = $request->all();
+
+            // Pemeriksaan::create($data);
+            // // return $data;
+            // return redirect()->to('pemeriksaan')->with("succes", "Berhasil Menambahkan Data Orang Tua");
+    }
     
 }

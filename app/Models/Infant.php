@@ -14,4 +14,8 @@ class Infant extends Model
     public function parents(){
         return $this->belongsTo('App\Models\Parents', 'id_parent', 'id');
     }
+
+    public function pemeriksaan(){
+        return $this->hasMany('App\Models\Pemeriksaan');
+    }
 }
