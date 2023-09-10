@@ -4,7 +4,7 @@
 <h1>Data Balita</h1>
 
 <div class="mb-3">
-    <label for="searchInput" class="form-label">Cari berdasarkan nama :</label>
+    <label for="searchInput" class="form-label">Cari berdasarkan nama/akte/nama orang tua/ktp :</label>
     <input type="text" class="form-control" id="searchInput" placeholder="Enter name">
 </div>
 
@@ -14,7 +14,7 @@
             <th scope="col">No</th>
             <th scope="col">Nama Bayi</th>
             <th scope="col">Akte</th>
-            <th scope="col">Tanggal Bayi</th>
+            <th scope="col">Tanggal Lahir Bayi</th>
             <th scope="col">JK</th>
             <th scope="col">Tinggi & Berat Lahir</th>
             <th scope="col">Nama Orang Tua</th>

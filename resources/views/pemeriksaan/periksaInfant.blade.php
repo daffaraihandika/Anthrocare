@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-<h1>Pemeriksaan Bayi</h1>
+<h1>Identitas Bayi</h1>
 
 <div class="row">
     <div class="col-md-8">
@@ -41,14 +41,17 @@
         </div>
     </div>
 </div>
-<br>
-<form action="" method="POST">
+
+<h1>Pemeriksaan Bayi</h1>
+
+<form action="{{ route('pemeriksaan.periksaInfant') }}" method="POST">
     @csrf
     <div class="row">
         <div class="col-md-7">
             <div class="mb-3 d-none">
                 <label for="id_infant" class="form-label">Id Bayi</label>
-                <input type="text" class="form-control" id="id_infant" aria-describedby="nama" name="id_infant" readonly value="{{ $identitas_bayi[0]->id }}">
+                <input type="text" class="form-control" id="id_infant" aria-describedby="nama" name="id_infant" readonly
+                    value="{{ $identitas_bayi[0]->id }}">
             </div>
             <div class="mb-3">
                 <label for="berat" class="form-label">Berat Badan</label>
