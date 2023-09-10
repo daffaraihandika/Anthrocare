@@ -2,15 +2,26 @@
 
 @section('container')
 <h1>Daftar Orangtua</h1>
-<div class="text-end">
-    <h3>
-        <a href="{{ url('daftar/add-parent') }}">
-            <button class="btn btn-primary">
-                <i class="bi bi-plus-square-fill"></i>
-                Tambah Orang Tua
-            </button>
-        </a>
-    </h3>
+
+<div class="row">
+    <div class="col">
+        <div class="mb-3">
+            <label for="searchInput" class="form-label">Cari berdasarkan nama atau KTP</label>
+            <input type="text" class="form-control" id="searchInput" placeholder="Enter name">
+        </div>
+    </div>
+    <div class="col">
+        <div class="d-flex flex-column align-items-end mt-auto">
+            <h3>
+                <a href="{{ url('daftar/add-parent') }}">
+                    <button class="btn btn-primary">
+                        <i class="bi bi-plus-square-fill"></i>
+                        Tambah Orang Tua
+                    </button>
+                </a>
+            </h3>
+        </div>
+    </div>
 </div>
 
 <table class="table">
@@ -42,4 +53,26 @@
         @endforeach
     </tbody>
 </table>
+
+<script>
+$(document).ready(function() {
+    $("#searchInput").on("keyup", function() {
+        var searchTerm = $(this).val().toLowerCase();
+
+        $("tbody tr").each(function() {
+            var namaOrangTua = $(this).find("td:eq(1)").text()
+                .toLowerCase(); // Nama Orang Tua in the second column (index 1)
+            var noKtp = $(this).find("td:eq(2)").text()
+                .toLowerCase(); // KTP Orang Tua in the third column (index 2)
+
+            // Check if either Nama Orang Tua or No KTP matches the search term
+            if (namaOrangTua.includes(searchTerm) || noKtp.includes(searchTerm)) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+});
+</script>
 @endsection

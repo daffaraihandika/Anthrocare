@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-<h1>Data TESSSS</h1>
+<h1>Pemeriksaan Bayi</h1>
 
 <div class="row">
     <div class="col-md-8">
@@ -32,13 +32,17 @@
     </div>
     <div class="col-md-4">
         <div class="row">
-            <div class="col">asd</div>
-            <div class="col">asd</div>
+            <div class="col">
+                <button class="btn btn-primary btn-daftarSubmit" type="submit">Send</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-primary btn-daftarSubmit" type="submit">Get</button>
+            </div>
         </div>
     </div>
 </div>
 <br>
-<form action="{{ route()}}" method="POST">
+<form action="" method="POST">
     @csrf
     <div class="row">
         <div class="col-md-7">
