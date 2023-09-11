@@ -6,32 +6,32 @@
 <div class="row">
     <div class="col-md-8">
         <div class="row">
-            <div class="col">Nama Bayi : </div>
-            <div class="col"></div>
+            <div class="col-md-3">Nama Bayi </div>
+            <div class="col-md-5">: {{ $identitas_bayi[0]->nama_bayi }}</div>
         </div>
         <div class="row">
-            <div class="col">Tanggal Lahir Bayi : </div>
-            <div class="col"></div>
+            <div class="col-md-3">Tanggal Lahir Bayi </div>
+            <div class="col-md-5">: {{ $identitas_bayi[0]->tgl_lahir_bayi }}</div>
         </div>
         <div class="row">
-            <div class="col">Jenis Kelamin Bayi : </div>
-            <div class="col"></div>
+            <div class="col-md-3">Jenis Kelamin Bayi </div>
+            <div class="col-md-5">: {{ $identitas_bayi[0]->jenis_kelamin }}</div>
         </div>
         <div class="row">
-            <div class="col">No Akte Bayi : </div>
-            <div class="col"></div>
+            <div class="col-md-3">No Akte Bayi </div>
+            <div class="col-md-5">: {{ $identitas_bayi[0]->no_akte_bayi}}</div>
         </div>
         <div class="row">
-            <div class="col">Umur : </div>
-            <div class="col"> Bulan</div>
+            <div class="col-md-3">Umur </div>
+            <div class="col-md-5">: {{ $identitas_bayi[0]->usia }} Bulan</div>
         </div>
         <div class="row">
-            <div class="col">Nama Orang Tua : </div>
-            <div class="col"></div>
+            <div class="col-md-3">Nama Orang Tua  </div>
+            <div class="col-md-5">: {{ $identitas_bayi[0]->nama_orangtua }}</div>
         </div>
         <div class="row">
-            <div class="col">Alamat Orang Tua : </div>
-            <div class="col"></div>
+            <div class="col-md-3">Alamat Orang Tua  </div>
+            <div class="col-md-5">: {{ $identitas_bayi[0]->alamat}}</div>
         </div>
     </div>
 </div>
@@ -53,16 +53,15 @@ panjang badan, zscore, kondisi --}}
     </thead>
     <tbody>
         <tr class="text-center">
-            <td></td>
-            <td> C</td>
-            <td> Cm</td>
-            <td> Kg</td>
-            <td></td>
-            <td></td>
+            <td>{{$last_inspection->tgl_pemeriksaan}}</td>
+            <td>{{$last_inspection->suhu}}°C</td>
+            <td>{{$last_inspection->panjang_badan}}Cm</td>
+            <td>{{$last_inspection->berat}}Kg</td>
+            <td>{{$last_inspection->zscore}}</td>
+            <td>{{$last_inspection->kondisi}}</td>
         </tr>
     </tbody>
 </table>
-
 
 <h1>Riwayat Pemeriksaan</h1>
 <table class="table">
@@ -77,16 +76,16 @@ panjang badan, zscore, kondisi --}}
         </tr>
     </thead>
     <tbody>
-        {{-- @foreach () --}}
+        @foreach ($all_inspection as $item)
         <tr class="text-center">
-            <td></td>
-            <td> C</td>
-            <td> Cm</td>
-            <td> Kg</td>
-            <td></td>
-            <td></td>
+            <td>{{$item->tgl_pemeriksaan}}</td>
+            <td>{{$item->suhu}}C</td>
+            <td>{{$item->berat}}Kg</td>
+            <td>{{$item->panjang_badan}}Cm</td>
+            <td>{{$item->zscore}}</td>
+            <td>{{$item->kondisi}}</td>
         </tr>
-        {{-- @endforeach --}}
+        @endforeach
     </tbody>
 </table>
 
