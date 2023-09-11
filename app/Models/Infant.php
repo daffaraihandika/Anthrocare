@@ -18,4 +18,8 @@ class Infant extends Model
     public function pemeriksaan(){
         return $this->hasMany('App\Models\Pemeriksaan');
     }
+
+    public function temporary(){
+        return $this->hasMany('App\Models\Temporary');
+    }
 }

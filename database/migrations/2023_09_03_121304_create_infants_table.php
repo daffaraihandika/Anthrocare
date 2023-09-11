@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_parent');
             $table->string('nama_bayi');
             $table->date('tgl_lahir_bayi');
+            $table->integer('usia');
             $table->enum('jenis_kelamin', ['Laki - Laki', 'Perempuan']);
             $table->string('no_akte_bayi')->unique();
             $table->double('tinggi_lahir', 8, 2);

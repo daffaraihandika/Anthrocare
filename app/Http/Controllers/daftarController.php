@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Infant;
 use App\Models\Parents;
+use Carbon\Carbon;
 
 class daftarController extends Controller
 {
@@ -60,9 +61,22 @@ class daftarController extends Controller
         // insert ke database
         $data = $request->all();
 
+        $usia = $this->calculateAgeInMonths($data['tgl_lahir_bayi']);
+
+        $data['usia'] = $usia;
+
         $infant = Infant::create($data);
 
         $infantId = $infant->id;
         return redirect()->to('pemeriksaan/periksaInfant/'.$infantId)->with("succes", "Berhasil Menambahkan Data Bayi");
-    }    
+    }
+    
+    public function calculateAgeInMonths($birthdate) {
+        $birthdate = Carbon::parse($birthdate);
+        $currentDate = Carbon::now();
+    
+        $ageInMonths = $currentDate->diffInMonths($birthdate);
+    
+        return $ageInMonths;
+    }
 }
