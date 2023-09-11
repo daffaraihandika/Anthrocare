@@ -39,7 +39,8 @@ class hasilPemeriksaanController extends Controller
         ->orderBy('pemeriksaan.tgl_pemeriksaan', 'desc')
         ->first();
 
-        // return $last_inspection;
+
+        // return $all_inspection;
         return view('hasil pemeriksaan/detail', compact('title', 'identitas_bayi', 'last_inspection', 'all_inspection'));
     }
 

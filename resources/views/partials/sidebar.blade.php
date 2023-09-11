@@ -22,7 +22,7 @@
             </li>
             <li class="nav-item">
                 <a href="/hasilPemeriksaan"
-                    class="nav-link text-white {{ $title === 'Hasil-Pemeriksaan' ? 'active' : '' }}">
+                    class="nav-link text-white {{ $title === 'Hasil Pemeriksaan' ? 'active' : '' }}">
                     Hasil Pemeriksaan
                 </a>
             </li>

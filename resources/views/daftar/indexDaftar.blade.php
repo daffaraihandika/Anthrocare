@@ -43,7 +43,7 @@
             <td>{{ $item->alamat }}</td>
             <td>
                 <a href="{{ url('daftar/add-infant/'.$item->id) }}" class="btn mb-2 mb-xl-0">
-                    <i class="bi bi-plus-square-fill text-primary"></i>
+                    <button class="btn btn-primary">Tambah Bayi</button>
                 </a>
                 <a href="" class="btn mb-2 mb-xl-0">
                     <i class="bi bi-archive-fill text-danger"></i>
