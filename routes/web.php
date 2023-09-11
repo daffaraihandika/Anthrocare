@@ -32,11 +32,17 @@ Route::post('/daftar/add-infant/{infant:parent_id}', [daftarController::class, '
 // Pemeriksaan routes
 Route::get('/pemeriksaan', [pemeriksaanController::class, 'index']); // menampilkan list bayi yang udah terdaftar, ada fitur search buat cari bayi lebih cepat, pada setiap list bayi tersebut terdapat tombol aksi untuk mengarah ke /pemeriksaan/bayi/{id_bayi}
 Route::get('/pemeriksaan/periksaInfant/{infant:id}', [pemeriksaanController::class, 'getInfant']); // menampilkan tampilan pemeriksaan bayi, terdapat identitas bayi, tombol get data, input field bb,tb,suhu,z-score,btnSubmit, di pinggirnya ada informasi mengenai status kondisi bayi
+Route::post('/pemeriksaan/periksaInfant/{infant:id}/sendData', [pemeriksaanController::class, 'sendData'])->name('pemeriksaan.sendData');
 Route::post('/pemeriksaan/periksaInfant/', [pemeriksaanController::class, 'createCheckupInfant'])->name('pemeriksaan.periksaInfant'); // untuk submit, dan memasukkan data ke tabel pemeriksaan
 
 // Hasil Pemeriksaan routes
 Route::get('/hasilPemeriksaan', [hasilPemeriksaanController::class, 'index']);
 Route::get('/hasilPemeriksaan/detail/{infant:id}', [hasilPemeriksaanController::class, 'getInfant']);
+
+// pemeriksaan balita
+// Route::post('/send-data/{id}/{nama_bayi}/{usia}/{jenis_kelamin}', [pemeriksaanController::class, 'sendData']);
+
+// Route::post();
 
 
 // Route::get('/daftars', [daftarController::class, 'getDaftar']);

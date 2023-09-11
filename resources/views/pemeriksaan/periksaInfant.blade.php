@@ -33,7 +33,29 @@
     <div class="col-md-4">
         <div class="row">
             <div class="col">
-                <button class="btn btn-primary btn-daftarSubmit" type="submit">Send</button>
+                <form action="{{ route('pemeriksaan.sendData', ['infant' => $identitas_bayi[0]->id]) }}" method="POST">
+                    @csrf
+                    <div class="mb-3 d-none">
+                        <label for="id_infant" class="form-label">Id Bayi</label>
+                        <input type="text" class="form-control" id="id_infant" aria-describedby="nama" name="id_infant" readonly
+                            value="{{ $identitas_bayi[0]->id }}">
+                    </div>
+                    <div class="mb-3 d-none">
+                        <label for="nama_bayi" class="form-label">Nama Bayi</label>
+                        <input type="text" class="form-control" id="nama_bayi" aria-describedby="" name="nama_bayi" value="{{ $identitas_bayi[0]->nama_bayi }}">
+                    </div>
+                    <div class="mb-3 d-none">
+                        <label for="usia" class="form-label">Usia</label>
+                        <input type="text" class="form-control" id="usia" aria-describedby="" name="usia" value="{{ $identitas_bayi[0]->usia }}">
+                    </div>
+                    <div class="mb-3 d-none">
+                        <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                        <input type="text" class="form-control" id="jenis_kelamin" aria-describedby="" name="jenis_kelamin" value="{{ $identitas_bayi[0]->jenis_kelamin }}">
+                    </div>
+                    <div class="mb-3">
+                        <button class="btn btn-primary btn-daftarSubmit" type="submit" >Send</button>
+                    </div>
+                </form>
             </div>
             <div class="col">
                 <button class="btn btn-primary btn-daftarSubmit" type="submit">Get</button>
