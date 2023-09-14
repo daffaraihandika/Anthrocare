@@ -15,19 +15,19 @@ class hasilPemeriksaanController extends Controller
     public function index(){
         $title = 'Hasil Pemeriksaan';
         $data_bayi = Pemeriksaan::join('infants', 'pemeriksaan.id_infant', '=', 'infants.id')
-        ->join('parents', 'infants.id_parent', '=', 'parents.id')
-        ->select(
-            'pemeriksaan.id_infant',
-            'infants.nama_bayi',
-            'infants.no_akte_bayi',
-            'infants.tgl_lahir_bayi',
-            'infants.jenis_kelamin',
-            'parents.nama_orangtua',
-            'parents.no_ktp',
-        )
-        ->distinct("pemeriksaan.id_infant")
-        ->groupBy('infants.nama_bayi')
-        ->get();
+    ->join('parents', 'infants.id_parent', '=', 'parents.id')
+    ->select(
+        'pemeriksaan.id_infant',
+        'infants.nama_bayi',
+        'infants.no_akte_bayi',
+        'infants.tgl_lahir_bayi',
+        'infants.jenis_kelamin',
+        'parents.nama_orangtua',
+        'parents.no_ktp',
+    )
+    ->distinct("pemeriksaan.id_infant")
+    ->groupBy('infants.nama_bayi')
+    ->paginate(10);
 
         return view('hasil pemeriksaan/indexHasilPemeriksaan', compact('title', 'data_bayi'));
     }
