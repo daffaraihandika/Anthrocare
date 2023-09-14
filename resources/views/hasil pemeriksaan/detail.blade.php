@@ -93,4 +93,4 @@ panjang badan, zscore, kondisi --}}
     <button class="btn btn-success">Cetak PDF</button>
 </a>
 
-@endsection
+@endsection 
