@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Infant;
 use App\Models\Parents;
 use App\Models\Pemeriksaan;
+use App\Models\Temporary;
 use Carbon\Carbon;
 
 class pemeriksaanController extends Controller
@@ -26,13 +27,13 @@ class pemeriksaanController extends Controller
         $title = "Pemeriksaan";
         $identitas_bayi = Infant::join('parents', 'infants.id_parent', '=', 'parents.id')
         ->where('infants.id', $id)
-        ->select('infants.id' ,'infants.nama_bayi', 'infants.jenis_kelamin', 'infants.tgl_lahir_bayi', 'infants.no_akte_bayi', 'parents.nama_orangtua')
+        ->select('infants.id' ,'infants.nama_bayi', 'infants.jenis_kelamin', 'infants.tgl_lahir_bayi', 'infants.no_akte_bayi', 'infants.usia', 'parents.nama_orangtua')
         ->get();
 
-        $identitas_bayi->map(function ($bayi) {
-            $bayi->usia = $this->calculateAgeInMonths($bayi->tgl_lahir_bayi);
-            return $bayi;
-        });
+        // $identitas_bayi->map(function ($bayi) {
+        //     $bayi->usia = $this->calculateAgeInMonths($bayi->tgl_lahir_bayi);
+        //     return $bayi;
+        // });
 
         // return $identitas_bayi;
         return view('pemeriksaan/periksaInfant', compact('title', 'identitas_bayi'));
@@ -48,6 +49,48 @@ class pemeriksaanController extends Controller
     }
 
     // method untuk tombol get
+
+    public function sendData(Request $request) {
+    
+        // Simpan data ke tabel temporaries
+        $temp = Temporary::create([
+            'id_infant' => $request->id_infant,
+            'nama_bayi' => $request->nama_bayi,
+            'usia' => $request->usia,
+            'jenis_kelamin' => $request->jenis_kelamin,
+        ]);
+    
+        // Redirect atau lakukan operasi lain yang diperlukan
+        // return redirect()->back()->with('success', 'Data berhasil disimpan ke tabel temporaries.');
+        return $temp;
+    }
+    
+
+    // public function sendData($id, $nama_bayi, $usia, $jenis_kelamin){
+    //     // Ambil data bayi dari tabel infants
+    //     $bayi = Infant::find($id);
+    //     return $bayi;
+    
+    //     if (!$bayi) {
+    //         return response()->json(['message' => 'Bayi tidak ditemukan'], 404);
+    //     }
+    
+    //     // Simpan data bayi ke dalam tabel temporaries
+    //     Temporary::create([
+    //         'id_infant' => $bayi->id,
+    //         'nama_bayi' => $bayi->nama_bayi,
+    //         'usia' => $bayi->usia,
+    //         'jenis_kelamin' => $bayi->jenis_kelamin,
+    //     ]);
+    
+    //     // Optional: Hapus data bayi dari tabel infants jika diperlukan
+    //     // $bayi->delete();
+        
+    //     // Mengirimkan data bayi ke tampilan pemeriksaan/periksaInfant
+    //     // return view('pemeriksaan/periksaInfant', compact('bayi'));
+    //     return $bayi;
+    // }
+    
 
     // method untuk tombol send
 

@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('temporaries', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_infant')->nullable();
+            $table->string('nama_bayi');
+            $table->integer('usia');
+            $table->string('jenis_kelamin');
             // $table->date('tgl_pemeriksaan')->nullable();
             $table->double('zscore', 8, 2)->nullable();
             $table->double('suhu', 8, 2)->nullable();
