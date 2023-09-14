@@ -55,8 +55,8 @@ panjang badan, zscore, kondisi --}}
         <tr class="text-center">
             <td>{{$last_inspection->tgl_pemeriksaan}}</td>
             <td>{{$last_inspection->suhu}}°C</td>
-            <td>{{$last_inspection->panjang_badan}}Cm</td>
             <td>{{$last_inspection->berat}}Kg</td>
+            <td>{{$last_inspection->panjang_badan}}Cm</td>
             <td>{{$last_inspection->zscore}}</td>
             <td>{{$last_inspection->kondisi}}</td>
         </tr>
@@ -79,7 +79,7 @@ panjang badan, zscore, kondisi --}}
         @foreach ($all_inspection as $item)
         <tr class="text-center">
             <td>{{$item->tgl_pemeriksaan}}</td>
-            <td>{{$item->suhu}}C</td>
+            <td>{{$item->suhu}}°C</td>
             <td>{{$item->berat}}Kg</td>
             <td>{{$item->panjang_badan}}Cm</td>
             <td>{{$item->zscore}}</td>
