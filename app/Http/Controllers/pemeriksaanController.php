@@ -61,35 +61,9 @@ class pemeriksaanController extends Controller
         ]);
     
         // Redirect atau lakukan operasi lain yang diperlukan
-        // return redirect()->back()->with('success', 'Data berhasil disimpan ke tabel temporaries.');
-        return $temp;
+        return redirect()->back()->with('success', 'Data berhasil dikirim ke alat Anthrocare');
+        // return $temp;
     }
-    
-
-    // public function sendData($id, $nama_bayi, $usia, $jenis_kelamin){
-    //     // Ambil data bayi dari tabel infants
-    //     $bayi = Infant::find($id);
-    //     return $bayi;
-    
-    //     if (!$bayi) {
-    //         return response()->json(['message' => 'Bayi tidak ditemukan'], 404);
-    //     }
-    
-    //     // Simpan data bayi ke dalam tabel temporaries
-    //     Temporary::create([
-    //         'id_infant' => $bayi->id,
-    //         'nama_bayi' => $bayi->nama_bayi,
-    //         'usia' => $bayi->usia,
-    //         'jenis_kelamin' => $bayi->jenis_kelamin,
-    //     ]);
-    
-    //     // Optional: Hapus data bayi dari tabel infants jika diperlukan
-    //     // $bayi->delete();
-        
-    //     // Mengirimkan data bayi ke tampilan pemeriksaan/periksaInfant
-    //     // return view('pemeriksaan/periksaInfant', compact('bayi'));
-    //     return $bayi;
-    // }
     
 
     // method untuk tombol send
@@ -112,8 +86,13 @@ class pemeriksaanController extends Controller
 
             Pemeriksaan::create($data);
             // return $data;
-            // return redirect()->to('pemeriksaan')->with("succes", "Berhasil Menambahkan Data Orang Tua");
-            return $data;
+            return redirect()->to('hasilPemeriksaan/detail/'.$data['id_infant'])->with("succes", "Berhasil Menambahkan Data Orang Tua");
+            // return $data;
+    }
+
+    public function deleteInfant($id){
+        Infant::where('id', $id)->delete();
+        return back()->with("success", "Berhasil Menghapus Data Bayi");
     }
     
 }

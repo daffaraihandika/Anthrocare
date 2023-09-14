@@ -79,4 +79,10 @@ class daftarController extends Controller
     
         return $ageInMonths;
     }
+
+    public function deleteParent($parent_id){
+        // return "tess ".$parent_id;
+        Parents::where('id', $parent_id)->delete();
+        return back()->with("success", "Berhasil Menghapus Data Orangtua");
+    }
 }

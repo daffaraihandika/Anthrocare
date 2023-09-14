@@ -45,9 +45,17 @@
                 <a href="{{ url('daftar/add-infant/'.$item->id) }}" class="btn mb-2 mb-xl-0">
                     <button class="btn btn-primary">Tambah Bayi</button>
                 </a>
-                <a href="" class="btn mb-2 mb-xl-0">
+
+                <form action="{{ url('daftar/'.$item->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Apakah anda yakin ingin menghapus data orangtua dengan nama {{ $item->nama_orangtua }}?')">
+                    @csrf
+                    @method("DELETE")
+                    <button class="btn mb-2 mb-xl-0">
+                        <i class="bi bi-archive-fill text-danger"></i>
+                    </button>
+                </form>
+                {{-- <a href="" class="btn mb-2 mb-xl-0">
                     <i class="bi bi-archive-fill text-danger"></i>
-                </a>
+                </a> --}}
             </td>
         </tr>
         @endforeach

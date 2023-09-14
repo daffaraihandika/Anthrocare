@@ -29,10 +29,10 @@
             <td>{{$item->no_akte_bayi}}</td>
             <td>{{$item->tgl_lahir_bayi}}</td>
             <td>{{$item->jenis_kelamin}}</td>
-            <td>{{ $item->parents->nama_orangtua }}</td>
-            <td>{{ $item->parents->no_ktp }}</td>
+            <td>{{ $item->nama_orangtua }}</td>
+            <td>{{ $item->no_ktp }}</td>
             <td>
-                <a href="{{ url('hasilPemeriksaan/detail/'.$item->id) }}" class="btn mb-2 mb-xl-0">
+                <a href="{{ url('hasilPemeriksaan/detail/'.$item->id_infant) }}" class="btn mb-2 mb-xl-0">
                     <button class="btn btn-primary">
                         Detail
                     </button>

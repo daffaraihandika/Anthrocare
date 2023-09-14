@@ -15,8 +15,13 @@ class Infant extends Model
         return $this->belongsTo('App\Models\Parents', 'id_parent', 'id');
     }
 
-    public function pemeriksaan(){
-        return $this->hasMany('App\Models\Pemeriksaan');
+    // public function pemeriksaan(){
+    //     return $this->hasMany('App\Models\Pemeriksaan');
+    // }
+
+    public function pemeriksaan()
+    {
+        return $this->hasMany(Pemeriksaan::class, 'id_infant', 'id');
     }
 
     public function temporary(){
