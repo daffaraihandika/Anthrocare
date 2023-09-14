@@ -3,6 +3,14 @@
 @section('container')
 <h1>Data Hasil Pemeriksaan Bayi</h1>
 
+    <div class="col d-flex justify-content-end align-items-end" >
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item " aria-current="page">
+                <a class="text-decoration-none text-secondary">Hasil Pemeriksaan</a>
+            </li>
+        </ol>
+    </div>
+
 <div class="mb-3">
     <label for="searchInput" class="form-label">Cari berdasarkan nama/akte/nama orang tua/ktp :</label>
     <input type="text" class="form-control" id="searchInput" placeholder="Enter name">
@@ -22,9 +30,10 @@
         </tr>
     </thead>
     <tbody>
+        <?php $i = $data_bayi->firstItem() ?>
         @foreach ($data_bayi as $item)
         <tr class="text-center">
-            <td>{{ $loop->iteration }}</td>
+            <td>{{ $i }}</td>
             <td>{{$item->nama_bayi}}</td>
             <td>{{$item->no_akte_bayi}}</td>
             <td>{{$item->tgl_lahir_bayi}}</td>
@@ -39,9 +48,12 @@
                 </a>
             </td>
         </tr>
+        <?php $i++ ?>
         @endforeach
     </tbody>
 </table>
+
+{{ $data_bayi->links() }}
 
 <script>
     $(document).ready(function() {

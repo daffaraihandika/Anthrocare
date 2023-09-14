@@ -1,14 +1,28 @@
 @extends('layouts.main')
 
 @section('container')
-    <h1>Daftar Balita</h1>
+<div class="row">
+    <div class="col">
+        <h1>Daftar Orang Tua</h1>
+    </div>
+    <div class="col d-flex justify-content-end align-items-end" >
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item " aria-current="page">
+                <a href="/daftar" class="text-decoration-none">Pendaftaran</a>
+            </li>
+            <li class="breadcrumb-item " aria-current="page">
+                <a class="text-decoration-none text-secondary">Daftar Orang Tua</a>
+            </li>
+        </ol>
+    </div>
+</div>
 
     <form action="{{ route('daftar.add-parent') }}" method="POST">
         @csrf
         <div class="row daftar">
             <div class="col-md-6">
                 {{-- Form orang tua --}}
-                <h3 class="title">Biodata Orangtua</h3>
+                <h3 class="title">Biodata Orang Tua</h3>
                 <div class="mb-3">
                     <label for="nama_orangtua" class="form-label">Nama</label>
                     <input type="text" class="form-control" id="nama_orangtua" aria-describedby="nama" name="nama_orangtua">

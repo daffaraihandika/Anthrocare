@@ -11,16 +11,11 @@ class daftarController extends Controller
 {
     //
     public function index(){
-        $data_ortu = Parents::orderBy('id', 'asc')->get(); // mengambil semua data ortu
-
-        // return [
-        //     "status" => 1,
-        //     "data_ortu" => $data_ortu,
-        //     "msg" => "berhasill"
-        // ];
+        $data_ortu = Parents::orderBy('id', 'desc')->paginate(10); // get data with pagination
+    
         return view('daftar/indexDaftar', [
             "title" => "Daftar",
-            "data_ortu" => Parents::orderBy('id', 'asc')->get(), // mengambil semua data ortu
+            "data_ortu" => $data_ortu,
         ]);
     }
 

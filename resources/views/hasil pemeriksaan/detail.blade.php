@@ -1,7 +1,18 @@
 @extends('layouts.main')
 
 @section('container')
+
 <h1>Hasil Pemeriksaan Detail Bayi</h1>
+    <div class="col d-flex justify-content-end align-items-end" >
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item " aria-current="page">
+                <a href="/hasilPemeriksaan" class="text-decoration-none">Hasil Pemeriksaan</a>
+            </li>
+            <li class="breadcrumb-item " aria-current="page">
+                <a class="text-decoration-none text-secondary">Detail</a>
+            </li>
+        </ol>
+    </div>
 
 <div class="row">
     <div class="col-md-8">
@@ -93,4 +104,4 @@ panjang badan, zscore, kondisi --}}
     <button class="btn btn-success">Cetak PDF</button>
 </a>
 
-@endsection
+@endsection 

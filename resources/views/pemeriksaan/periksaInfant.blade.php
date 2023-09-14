@@ -6,28 +6,28 @@
 <div class="row">
     <div class="col-md-8">
         <div class="row">
-            <div class="col">Nama Bayi : </div>
-            <div class="col">{{ $identitas_bayi[0]->nama_bayi }}</div>
+            <div class="col-md-3">Nama Bayi</div>
+            <div class="col-md-5">: {{ $identitas_bayi[0]->nama_bayi }}</div>
         </div>
         <div class="row">
-            <div class="col">Tanggal Lahir Bayi : </div>
-            <div class="col">{{ $identitas_bayi[0]->tgl_lahir_bayi }}</div>
+            <div class="col-md-3">Tanggal Lahir Bayi</div>
+            <div class="col-md-5">: {{ $identitas_bayi[0]->tgl_lahir_bayi }}</div>
         </div>
         <div class="row">
-            <div class="col">Jenis Kelamin Bayi : </div>
-            <div class="col">{{ $identitas_bayi[0]->jenis_kelamin }}</div>
+            <div class="col-md-3">Jenis Kelamin Bayi</div>
+            <div class="col-md-5">: {{ $identitas_bayi[0]->jenis_kelamin }}</div>
         </div>
         <div class="row">
-            <div class="col">No Akte Bayi : </div>
-            <div class="col">{{ $identitas_bayi[0]->no_akte_bayi}}</div>
+            <div class="col-md-3">No Akte Bayi</div>
+            <div class="col-md-5">: {{ $identitas_bayi[0]->no_akte_bayi}}</div>
         </div>
         <div class="row">
-            <div class="col">Umur : </div>
-            <div class="col">{{ $identitas_bayi[0]->usia }} Bulan</div>
+            <div class="col-md-3">Umur</div>
+            <div class="col-md-5">: {{ $identitas_bayi[0]->usia }} Bulan</div>
         </div>
         <div class="row">
-            <div class="col">Nama Orang Tua : </div>
-            <div class="col">{{ $identitas_bayi[0]->nama_orangtua }}</div>
+            <div class="col-md-3">Nama Orang Tua</div>
+            <div class="col-md-5">: {{ $identitas_bayi[0]->nama_orangtua }}</div>
         </div>
     </div>
     <div class="col-md-4">

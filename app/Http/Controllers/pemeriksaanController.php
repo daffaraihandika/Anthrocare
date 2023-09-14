@@ -13,13 +13,8 @@ class pemeriksaanController extends Controller
 {
     public function index(){
         $title = 'Pemeriksaan';
-        $data_bayi = Infant::with('parents')->get();
-
-        // return [
-        //     "status" => 1,
-        //     "data" => $data_bayi,
-        //     "msg" => "berhasillll"
-        // ];
+        $data_bayi = Infant::with('parents')->orderBy('id', 'desc')->paginate(10); // get data with pagination
+    
         return view('pemeriksaan/indexPemeriksaan', compact('title', 'data_bayi'));
     }
 
