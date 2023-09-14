@@ -32,7 +32,27 @@ class daftarController extends Controller
 
     public function addParent(Request $request){
         // Validate
+        $message = [
+            'nama_orangtua.required' => 'Nama wajib diisi',
+            'tgl_lahir_orangtua.required' => 'Tanggal lahir wajib diisi',
+            'alamat.required' => 'Alamat wajib diisi',
+            'no_ktp.required' => 'No KTP wajib diisi',
+            'no_ktp.unique' => 'No KTP sudah terdaftar',
+            'gol_darah.required' => 'Golongan darah wajib diisi',
+            'no_telp.required' => 'No telepon wajib diisi',
+        ];
 
+        $request->validate(
+            [
+                'nama_orangtua' => 'required',
+                'tgl_lahir_orangtua' => 'required',
+                'alamat' => 'required',
+                'no_ktp' => 'required|unique:parents',
+                'gol_darah' => 'required',
+                'no_telp' => 'required'
+            ],
+            $message
+        );
 
         // insert to Database
         $data = [
@@ -57,6 +77,27 @@ class daftarController extends Controller
 
     public function addInfant(Request $request){
         // Validate
+        $message = [
+            'nama_bayi.required' => 'Nama wajib diisi',
+            'tgl_lahir_bayi.required' => 'Tanggal lahir wajib diisi',
+            'jenis_kelamin.required' => 'Jenis kelamin wajib diisi',
+            'no_akte_bayi.required' => 'No akte bayi wajib diisi',
+            'no_akte_bayi.unique' => 'No akte bayi sudah terdaftar',
+            'tinggi_lahir.required' => 'Tinggi lahir wajib diisi',
+            'berat_lahir.required' => 'Berat lahir wajib diisi',
+        ];
+
+        $request->validate(
+            [
+                'nama_bayi' => 'required',
+                'tgl_lahir_bayi' => 'required',
+                'jenis_kelamin' => 'required',
+                'no_akte_bayi' => 'required|unique:infants',
+                'tinggi_lahir' => 'required',
+                'berat_lahir' => 'required'
+            ],
+            $message
+        );
 
         // insert ke database
         $data = $request->all();

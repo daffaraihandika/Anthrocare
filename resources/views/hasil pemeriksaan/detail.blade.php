@@ -89,7 +89,7 @@ panjang badan, zscore, kondisi --}}
     </tbody>
 </table>
 
-<a href="{{ url('/hasilPemeriksaan/exportPDF') }}">
+<a href="{{ url('/hasilPemeriksaan/exportPDF/'.$identitas_bayi[0]->id) }}">
     <button class="btn btn-success">Cetak PDF</button>
 </a>
 
