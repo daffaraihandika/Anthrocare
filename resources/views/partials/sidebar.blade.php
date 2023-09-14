@@ -14,6 +14,7 @@
                 <a href="/daftar" class="nav-link text-white {{ $title === 'Daftar' ? 'active' : '' }}">
                     Pendaftaran
                 </a>
+                
             </li>
             <li class="nav-item">
                 <a href="/pemeriksaan" class="nav-link text-white {{ $title === 'Pemeriksaan' ? 'active' : '' }}">

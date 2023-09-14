@@ -1,7 +1,21 @@
 @extends('layouts.main')
 
 @section('container')
-    <h1>Daftar Balita</h1>
+<div class="row">
+    <div class="col">
+        <h1>Daftar Bayi</h1>
+    </div>
+    <div class="col d-flex justify-content-end align-items-end" >
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item " aria-current="page">
+                <a href="/daftar" class="text-decoration-none">Pendaftaran</a>
+            </li>
+            <li class="breadcrumb-item " aria-current="page">
+                <a class="text-decoration-none text-secondary">Daftar Bayi</a>
+            </li>
+        </ol>
+    </div>
+</div>
 
     <form action="" method="POST">
         @csrf

@@ -8,7 +8,7 @@
         <div class="row daftar">
             <div class="col-md-6">
                 {{-- Form orang tua --}}
-                <h3 class="title">Biodata Orangtua</h3>
+                <h3 class="title">Biodata Orang Tua</h3>
                 <div class="mb-3">
                     <label for="nama_orangtua" class="form-label">Nama</label>
                     <input type="text" class="form-control" id="nama_orangtua" aria-describedby="nama" name="nama_orangtua">

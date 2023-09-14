@@ -1,7 +1,18 @@
 @extends('layouts.main')
 
 @section('container')
-<h1>Daftar Orangtua</h1>
+<div class="row">
+    <div class="col">
+        <h1>Daftar Orang Tua</h1>
+    </div>
+    <div class="col d-flex justify-content-end align-items-end" >
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item " aria-current="page">
+                <a class="text-decoration-none text-secondary">Pendaftaran</a>
+            </li>
+        </ol>
+    </div>
+</div>
 
 <div class="row">
     <div class="col">
@@ -11,7 +22,7 @@
         </div>
     </div>
     <div class="col">
-        <div class="d-flex flex-column align-items-end mt-auto">
+        <div class="col d-flex justify-content-end align-items-end">
             <h3>
                 <a href="{{ url('daftar/add-parent') }}">
                     <button class="btn btn-primary">
@@ -35,9 +46,10 @@
         </tr>
     </thead>
     <tbody>
+        <?php $i = $data_ortu->firstItem() ?> 
         @foreach ($data_ortu as $item)
         <tr class="text-center">
-            <td>{{ $loop->iteration }}</td>
+            <td>{{ $i }}</td>
             <td>{{ $item->nama_orangtua }}</td>
             <td>{{ $item->no_ktp }}</td>
             <td>{{ $item->alamat }}</td>
@@ -49,8 +61,8 @@
                 <form action="{{ url('daftar/'.$item->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Apakah anda yakin ingin menghapus data orangtua dengan nama {{ $item->nama_orangtua }}?')">
                     @csrf
                     @method("DELETE")
-                    <button class="btn mb-2 mb-xl-0">
-                        <i class="bi bi-archive-fill text-danger"></i>
+                    <button class="btn btn-danger mb-2 mb-xl-0">
+                        Hapus
                     </button>
                 </form>
                 {{-- <a href="" class="btn mb-2 mb-xl-0">
@@ -58,9 +70,12 @@
                 </a> --}}
             </td>
         </tr>
+        <?php $i++ ?>
         @endforeach
     </tbody>
 </table>
+
+    {{ $data_ortu->links() }}
 
 <script>
 $(document).ready(function() {

@@ -14,7 +14,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <title>Hello, world!</title>
+    <title>{{$title}}</title>
 </head>
 
 <body>
