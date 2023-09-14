@@ -9,7 +9,7 @@ use App\Models\Pemeriksaan;
 use Carbon\Carbon;
 use PDF;
 // use Barryvdh\DomPDF\Facade\Pdf;
-
+//
 class hasilPemeriksaanController extends Controller
 {
     public function index(){
