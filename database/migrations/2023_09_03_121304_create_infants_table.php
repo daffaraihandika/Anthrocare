@@ -22,7 +22,7 @@ return new class extends Migration
             $table->double('tinggi_lahir', 8, 2);
             $table->double('berat_lahir', 8, 2);
             $table->timestamps();
-            $table->foreign('id_parent')->references('id')->on('parents');
+            $table->foreign('id_parent')->references('id')->on('parents')->onDelete('cascade');
         });
     }
 

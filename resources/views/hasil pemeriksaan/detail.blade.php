@@ -89,4 +89,8 @@ panjang badan, zscore, kondisi --}}
     </tbody>
 </table>
 
+<a href="{{ url('/hasilPemeriksaan/exportPDF') }}">
+    <button class="btn btn-success">Cetak PDF</button>
+</a>
+
 @endsection

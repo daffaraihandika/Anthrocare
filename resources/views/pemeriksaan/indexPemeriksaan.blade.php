@@ -39,9 +39,18 @@
                         Periksa
                     </button>
                 </a>
-                <a href="" class="btn mb-2 mb-xl-0">
+
+                <form action="{{ url('pemeriksaan/'.$item->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Apakah anda yakin ingin menghapus data bayi dengan nama {{ $item->nama_bayi }}?')">
+                    @csrf
+                    @method("DELETE")
+                    <button class="btn mb-2 mb-xl-0">
+                        <i class="bi bi-archive-fill text-danger"></i>
+                    </button>
+                </form>
+
+                {{-- <a href="" class="btn mb-2 mb-xl-0">
                     <i class="bi bi-archive-fill text-danger"></i>
-                </a>
+                </a> --}}
             </td>
         </tr>
         @endforeach
