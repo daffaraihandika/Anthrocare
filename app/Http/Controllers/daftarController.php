@@ -19,6 +19,7 @@ class daftarController extends Controller
         ]);
     }
 
+    
     public function showAddParent(){
         return view('daftar/addParent',[
             "title" => "Add Parent",
@@ -58,9 +59,9 @@ class daftarController extends Controller
             'gol_darah' => $request->gol_darah,
             'no_telp' => $request->no_telp
         ];
-
+        
         Parents::Create($data);
-
+        
         return redirect()->to('daftar')->with("succes", "Berhasil Menambahkan Data Orang Tua");
     }
 
@@ -120,5 +121,31 @@ class daftarController extends Controller
         // return "tess ".$parent_id;
         Parents::where('id', $parent_id)->delete();
         return back()->with("success", "Berhasil Menghapus Data Orangtua");
+    }
+
+    // function buat api 
+    public function getOrtu(){
+        $data_ortu = Parents::orderBy('id', 'desc')->paginate(10); // get data with pagination
+        
+        return $data_ortu;
+    }
+
+    public function getAddInfant($parent_id){
+        $namaOrangTua = Parents::where("id", $parent_id)->pluck('id')->first(); // ngambil data nama orang tua
+        return $namaOrangTua;
+    }
+
+}
+
+class apiDaftarController extends Controller{
+    public function getOrtu(){
+        $data_ortu = Parents::orderBy('id', 'desc')->paginate(10); // get data with pagination
+        
+        $rensponse = [
+            "status" => 1,
+            "data" => $data_ortu
+        ];
+        
+        return $rensponse;
     }
 }

@@ -42,6 +42,12 @@ Route::get('/hasilPemeriksaan', [hasilPemeriksaanController::class, 'index']);
 Route::get('/hasilPemeriksaan/detail/{infant:id}', [hasilPemeriksaanController::class, 'getInfant']);
 Route::get('/hasilPemeriksaan/exportPDF/{infant:id}', [hasilPemeriksaanController::class, 'exportPDF']);
 
+
+
+
+
+
+
 // pemeriksaan balita
 // Route::post('/send-data/{id}/{nama_bayi}/{usia}/{jenis_kelamin}', [pemeriksaanController::class, 'sendData']);
 
