@@ -71,6 +71,9 @@ panjang badan, zscore, kondisi --}}
             <td>{{$last_inspection->zscore}}</td>
             <td>{{$last_inspection->kondisi}}</td>
         </tr>
+        <tr class="text-start">
+            <td colspan="6">Saran Makanan :{!! $status['food_suggestions'] !!}</td>
+        </tr>
     </tbody>
 </table>
 

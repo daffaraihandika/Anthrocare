@@ -33,7 +33,8 @@ class hasilPemeriksaanController extends Controller
     }
 
     public function getInfant($id){
-        $title = "Pemeriksaan";
+        $foodSuggestions = '';
+        $title = "Hasil Pemeriksaan";
         $identitas_bayi = Infant::join('parents', 'infants.id_parent', '=', 'parents.id')
         ->where('infants.id', $id)
         ->select(
@@ -73,14 +74,143 @@ class hasilPemeriksaanController extends Controller
             'pemeriksaan.panjang_badan', 
             'pemeriksaan.zscore', 
             'pemeriksaan.kondisi',
-            'pemeriksaan.created_at'
+            'pemeriksaan.created_at',
+            'infants.usia',
+            'infants.tgl_lahir_bayi'
         )
         ->orderBy('pemeriksaan.created_at', 'desc')
         ->first();
 
+        // food suggestion
+        if($last_inspection['usia'] <= 12){
+            // jika usia anak 1 tahun (usia <= 12 bulan)
+            if($last_inspection['kondisi'] == 'tinggi'){
+                $foodSuggestions = "
+                <ul>
+                    <li>Disarankan balita mendapatkan ASI atau susu formula yang cukup.</li>
+                    <li>Memberikan makanan padat seperti buah dan sayuran, cereal bayi, dan daging yang telah dihaluskan.</li>
+                    <li>Produk susu seperti yogurt rendah lemak bisa diberikan jika anak tidak memiliki alergi susu.</li>
+                </ul>
+                ";
+            }else if($last_inspection['kondisi'] == 'normal'){
+                $foodSuggestions = "
+                <ul>
+                    <li>Disarankan balita mendapatkan ASI atau susu formula yang cukup.</li>
+                    <li>Memberikan makanan padat seperti buah dan sayuran, cereal bayi, dan daging yang telah dihaluskan.</li>
+                    <li>Dapat memberikan telur rebus yang telah dicincang halus.</li>
+                    <li>Produk susu seperti yogurt rendah lemak bisa diberikan jika anak tidak memiliki alergi susu.</li>
+                    <li>Pastikan balita mendapatkan air yang cukup.</li>
+                </ul>
+                ";
+            }else if($last_inspection['kondisi'] == 'stunted'){
+                $foodSuggestions = "
+                <ul>
+                    <li>Disarankan balita mendapatkan ASI atau susu formula yang cukup.</li>
+                    <li>Memberikan makanan padat seperti buah dan sayuran, cereal bayi, dan daging yang telah dihaluskan.</li>
+                    <li>Sumber protein yang dihaluskan seperti daging tanpa lemak atau telur rebus yang dicincang halus.</li>
+                </ul>
+                ";
+            }else if($last_inspection['kondisi'] == 'severely stunted'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Teruskan pemberian ASI atau susu formula, dan mungkin dokter akan merekomendasikan tambahan nutrisi atau suplemen yang sesuai dengan kebutuhannya</li>
+                    <li>Pastikan makanan yang mereka konsumsi mengandung banyak nutrisi, termasuk protein, zat besi, kalsium, vitamin, dan mineral.</li>
+                    <li>Sayuran seperti bayam dan kangkung mengandung zat besi yang baik untuk membantu meningkatkan kadar hemoglobin dalam darah.</li>
+                    <li>Berikan lebih banyak sumber protein seperti telur yang dihaluskan, daging tanpa lemak, ikan, dan kacang-kacangan.</li>
+                    <li>Selalu berkonsultasi dengan dokter atau ahli gizi untuk perencanaan diet yang lebih khusus sesuai kebutuhan anak. Balita dengan kondisi ini mungkin memerlukan perawatan medis yang terkoordinasi.</li>
+                </ul>
+                ';
+            }
+        }else if($last_inspection['usia'] <= 24 && $last_inspection['usia'] > 12){
+            // jika usia anak 2 tahun (12 bulan < usia <= 24 bulan)
+            if($last_inspection['kondisi'] == 'tinggi'){
+                $foodSuggestions = '
+                <ul>
+                    <li>ASI atau susu rendah lemak masih diberikan, tetapi makanan padat harus menjadi komponen utama.</li>
+                    <li>Perkenalkan tekstur yang lebih kasar, seperti potongan buah, sayuran, roti gandum, dan pasta.</li>
+                    <li>Sumber protein seperti daging, ikan, telur, dan kacang-kacangan perlu diperkenalkan lebih banyak.</li>
+                    <li>Berikan sayuran hijau dan makanan tinggi serat seperti oatmeal.</li>
+                    <li>Produk susu rendah lemak dan yogurt penting untuk pertumbuhan tulang yang baik.</li>
+                </ul>
+                ';
+            }else if($last_inspection['kondisi'] == 'normal'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Tetap berikan ASI atau susu rendah lemak untuk asupan kalsium yang baik.</li>
+                    <li>Berikan berbagai jenis sayuran dan buah-buahan untuk memastikan asupan vitamin dan serat yang cukup.</li>
+                    <li>Pastikan balita mendapatkan cukup protein dari sumber seperti daging tanpa lemak, ayam, ikan, telur, dan kacang-kacangan.</li>
+                    <li>Sumber karbohidrat seperti nasi, roti gandum, dan sereal yang rendah gula sangat penting untuk energi.</li>
+                </ul>
+                ';
+            }else if($last_inspection['kondisi'] == 'stunted'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Lanjutkan dengan asupan ASI atau susu rendah lemak.</li>
+                    <li>Berikan makanan padat dengan tekstur yang lebih kasar seperti potongan buah, sayuran, roti gandum, dan pasta.</li>
+                    <li>Tingkatkan asupan protein dari daging, ikan, telur, dan kacang-kacangan.</li>
+                    <li>Pastikan balita mendapatkan cukup serat dari sayuran hijau dan oatmeal.</li>
+                </ul>
+                ';
+            }else if($last_inspection['kondisi'] == 'severely stunted'){
+                $foodSuggestions = '
+                <ul>
+                    <li>ASI atau susu rendah lemak harus tetap menjadi sumber nutrisi utama, dan mungkin diperlukan suplemen nutrisi tambahan yang diresepkan oleh dokter.</li>
+                    <li>Pastikan makanan yang dikonsumsi mengandung banyak nutrisi, termasuk protein, zat besi, kalsium, vitamin, dan mineral.</li>
+                    <li>Sayuran seperti bayam dan kangkung mengandung zat besi yang baik untuk membantu meningkatkan kadar hemoglobin dalam darah.</li>
+                    <li>Selalu berkonsultasi dengan dokter atau ahli gizi untuk perencanaan diet yang lebih khusus sesuai kebutuhan anak Anda. Balita dengan kondisi ini mungkin memerlukan perawatan medis yang terkoordinasi.</li>
+                </ul>
+                ';
+            }
+        }else if($last_inspection['usia'] > 24){
+            // jika usia anak lebih dari 2 tahun (usia > 24 bulan)
+            if($last_inspection['kondisi'] == 'tinggi'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Berikan berbagai jenis sayuran dan buah-buahan untuk memastikan asupan vitamin dan serat yang cukup.</li>
+                    <li>Pastikan balita mendapatkan cukup protein dari sumber seperti daging tanpa lemak, ayam, ikan, telur, dan kacang-kacangan.</li>
+                    <li>Sumber karbohidrat seperti nasi, roti gandum, dan sereal yang rendah gula sangat penting untuk energi.</li>
+                    <li>Pastikan balita mendapatkan air yang cukup.</li>
+                </ul>
+                ';
+            }else if($last_inspection['kondisi'] == 'normal'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Berikan berbagai jenis sayuran dan buah-buahan untuk memastikan asupan vitamin dan serat yang cukup.</li>
+                    <li>Pastikan balita mendapatkan cukup protein dari sumber seperti daging tanpa lemak, ayam, ikan, telur, dan kacang-kacangan.</li>
+                    <li>Sumber karbohidrat seperti nasi, roti gandum, dan sereal yang rendah gula sangat penting untuk energi.</li>
+                    <li>Pastikan balita mendapatkan air yang cukup.</li>
+                </ul>
+                ';
+            }else if($last_inspection['kondisi'] == 'stunted'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Berikan sayuran hijau gelap dan buah-buahan untuk asupan vitamin dan serat yang tinggi.</li>
+                    <li>Pastikan balita mendapatkan cukup protein dari sumber seperti daging tanpa lemak, ayam, ikan, telur, dan kacang-kacangan.</li>
+                    <li>Makanan seperti hati, kacang-kacangan, dan biji-bijian mengandung zat besi yang baik untuk membantu meningkatkan kadar hemoglobin dalam darah.</li>
+                    <li>Selalu berkonsultasi dengan dokter anak atau ahli gizi untuk perencanaan diet yang lebih khusus sesuai kebutuhan anak.</li>
+                </ul>
+                ';
+            }else if($last_inspection['kondisi'] == 'severely stunted'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Pastikan balita mendapatkan cukup protein dari sumber seperti daging tanpa lemak, ayam, ikan, telur, dan kacang-kacangan.</li>
+                    <li>Makanan seperti hati, kacang-kacangan, dan biji-bijian mengandung zat besi yang baik untuk membantu meningkatkan kadar hemoglobin dalam darah.</li>
+                    <li>Produk susu rendah lemak atau alternatif yang diperkaya kalsium seperti yogurt dan keju penting untuk pertumbuhan tulang yang baik.</li>
+                    <li>Pastikan balita mendapatkan cukup vitamin dan serat dari sayuran hijau gelap dan buah-buahan. Ini dapat membantu meningkatkan asupan nutrisi mereka.</li>
+                    <li>Dokter anak atau ahli gizi mungkin merekomendasikan minyak ikan atau suplemen omega-3 sebagai bagian dari perawatan nutrisi untuk membantu pemulihan pertumbuhan.</li>
+                </ul>
+                ';
+            }
+        }
+
+        $status = [
+            'kondisi' => $last_inspection['kondisi'],
+            'food_suggestions' => $foodSuggestions
+        ];
+
 
         // return $last_inspection;
-        return view('hasil pemeriksaan/detail', compact('title', 'identitas_bayi', 'last_inspection', 'all_inspection'));
+        return view('hasil pemeriksaan/detail', compact('title', 'identitas_bayi', 'last_inspection', 'all_inspection', 'status'));
     }
 
     public function calculateAgeInMonths($birthdate) {
@@ -138,10 +268,138 @@ class hasilPemeriksaanController extends Controller
         ->orderBy('pemeriksaan.created_at', 'desc')
         ->first();
 
+        // food suggestion
+        if($last_inspection['usia'] <= 12){
+            // jika usia anak 1 tahun (usia <= 12 bulan)
+            if($last_inspection['kondisi'] == 'tinggi'){
+                $foodSuggestions = "
+                <ul>
+                    <li>Disarankan balita mendapatkan ASI atau susu formula yang cukup.</li>
+                    <li>Memberikan makanan padat seperti buah dan sayuran, cereal bayi, dan daging yang telah dihaluskan.</li>
+                    <li>Produk susu seperti yogurt rendah lemak bisa diberikan jika anak tidak memiliki alergi susu.</li>
+                </ul>
+                ";
+            }else if($last_inspection['kondisi'] == 'normal'){
+                $foodSuggestions = "
+                <ul>
+                    <li>Disarankan balita mendapatkan ASI atau susu formula yang cukup.</li>
+                    <li>Memberikan makanan padat seperti buah dan sayuran, cereal bayi, dan daging yang telah dihaluskan.</li>
+                    <li>Dapat memberikan telur rebus yang telah dicincang halus.</li>
+                    <li>Produk susu seperti yogurt rendah lemak bisa diberikan jika anak tidak memiliki alergi susu.</li>
+                    <li>Pastikan balita mendapatkan air yang cukup.</li>
+                </ul>
+                ";
+            }else if($last_inspection['kondisi'] == 'stunted'){
+                $foodSuggestions = "
+                <ul>
+                    <li>Disarankan balita mendapatkan ASI atau susu formula yang cukup.</li>
+                    <li>Memberikan makanan padat seperti buah dan sayuran, cereal bayi, dan daging yang telah dihaluskan.</li>
+                    <li>Sumber protein yang dihaluskan seperti daging tanpa lemak atau telur rebus yang dicincang halus.</li>
+                </ul>
+                ";
+            }else if($last_inspection['kondisi'] == 'severely stunted'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Teruskan pemberian ASI atau susu formula, dan mungkin dokter akan merekomendasikan tambahan nutrisi atau suplemen yang sesuai dengan kebutuhannya</li>
+                    <li>Pastikan makanan yang mereka konsumsi mengandung banyak nutrisi, termasuk protein, zat besi, kalsium, vitamin, dan mineral.</li>
+                    <li>Sayuran seperti bayam dan kangkung mengandung zat besi yang baik untuk membantu meningkatkan kadar hemoglobin dalam darah.</li>
+                    <li>Berikan lebih banyak sumber protein seperti telur yang dihaluskan, daging tanpa lemak, ikan, dan kacang-kacangan.</li>
+                    <li>Selalu berkonsultasi dengan dokter atau ahli gizi untuk perencanaan diet yang lebih khusus sesuai kebutuhan anak. Balita dengan kondisi ini mungkin memerlukan perawatan medis yang terkoordinasi.</li>
+                </ul>
+                ';
+            }
+        }else if($last_inspection['usia'] <= 24 && $last_inspection['usia'] > 12){
+            // jika usia anak 2 tahun (12 bulan < usia <= 24 bulan)
+            if($last_inspection['kondisi'] == 'tinggi'){
+                $foodSuggestions = '
+                <ul>
+                    <li>ASI atau susu rendah lemak masih diberikan, tetapi makanan padat harus menjadi komponen utama.</li>
+                    <li>Perkenalkan tekstur yang lebih kasar, seperti potongan buah, sayuran, roti gandum, dan pasta.</li>
+                    <li>Sumber protein seperti daging, ikan, telur, dan kacang-kacangan perlu diperkenalkan lebih banyak.</li>
+                    <li>Berikan sayuran hijau dan makanan tinggi serat seperti oatmeal.</li>
+                    <li>Produk susu rendah lemak dan yogurt penting untuk pertumbuhan tulang yang baik.</li>
+                </ul>
+                ';
+            }else if($last_inspection['kondisi'] == 'normal'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Tetap berikan ASI atau susu rendah lemak untuk asupan kalsium yang baik.</li>
+                    <li>Berikan berbagai jenis sayuran dan buah-buahan untuk memastikan asupan vitamin dan serat yang cukup.</li>
+                    <li>Pastikan balita mendapatkan cukup protein dari sumber seperti daging tanpa lemak, ayam, ikan, telur, dan kacang-kacangan.</li>
+                    <li>Sumber karbohidrat seperti nasi, roti gandum, dan sereal yang rendah gula sangat penting untuk energi.</li>
+                </ul>
+                ';
+            }else if($last_inspection['kondisi'] == 'stunted'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Lanjutkan dengan asupan ASI atau susu rendah lemak.</li>
+                    <li>Berikan makanan padat dengan tekstur yang lebih kasar seperti potongan buah, sayuran, roti gandum, dan pasta.</li>
+                    <li>Tingkatkan asupan protein dari daging, ikan, telur, dan kacang-kacangan.</li>
+                    <li>Pastikan balita mendapatkan cukup serat dari sayuran hijau dan oatmeal.</li>
+                </ul>
+                ';
+            }else if($last_inspection['kondisi'] == 'severely stunted'){
+                $foodSuggestions = '
+                <ul>
+                    <li>ASI atau susu rendah lemak harus tetap menjadi sumber nutrisi utama, dan mungkin diperlukan suplemen nutrisi tambahan yang diresepkan oleh dokter.</li>
+                    <li>Pastikan makanan yang dikonsumsi mengandung banyak nutrisi, termasuk protein, zat besi, kalsium, vitamin, dan mineral.</li>
+                    <li>Sayuran seperti bayam dan kangkung mengandung zat besi yang baik untuk membantu meningkatkan kadar hemoglobin dalam darah.</li>
+                    <li>Selalu berkonsultasi dengan dokter atau ahli gizi untuk perencanaan diet yang lebih khusus sesuai kebutuhan anak Anda. Balita dengan kondisi ini mungkin memerlukan perawatan medis yang terkoordinasi.</li>
+                </ul>
+                ';
+            }
+        }else if($last_inspection['usia'] > 24){
+            // jika usia anak lebih dari 2 tahun (usia > 24 bulan)
+            if($last_inspection['kondisi'] == 'tinggi'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Berikan berbagai jenis sayuran dan buah-buahan untuk memastikan asupan vitamin dan serat yang cukup.</li>
+                    <li>Pastikan balita mendapatkan cukup protein dari sumber seperti daging tanpa lemak, ayam, ikan, telur, dan kacang-kacangan.</li>
+                    <li>Sumber karbohidrat seperti nasi, roti gandum, dan sereal yang rendah gula sangat penting untuk energi.</li>
+                    <li>Pastikan balita mendapatkan air yang cukup.</li>
+                </ul>
+                ';
+            }else if($last_inspection['kondisi'] == 'normal'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Berikan berbagai jenis sayuran dan buah-buahan untuk memastikan asupan vitamin dan serat yang cukup.</li>
+                    <li>Pastikan balita mendapatkan cukup protein dari sumber seperti daging tanpa lemak, ayam, ikan, telur, dan kacang-kacangan.</li>
+                    <li>Sumber karbohidrat seperti nasi, roti gandum, dan sereal yang rendah gula sangat penting untuk energi.</li>
+                    <li>Pastikan balita mendapatkan air yang cukup.</li>
+                </ul>
+                ';
+            }else if($last_inspection['kondisi'] == 'stunted'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Berikan sayuran hijau gelap dan buah-buahan untuk asupan vitamin dan serat yang tinggi.</li>
+                    <li>Pastikan balita mendapatkan cukup protein dari sumber seperti daging tanpa lemak, ayam, ikan, telur, dan kacang-kacangan.</li>
+                    <li>Makanan seperti hati, kacang-kacangan, dan biji-bijian mengandung zat besi yang baik untuk membantu meningkatkan kadar hemoglobin dalam darah.</li>
+                    <li>Selalu berkonsultasi dengan dokter anak atau ahli gizi untuk perencanaan diet yang lebih khusus sesuai kebutuhan anak.</li>
+                </ul>
+                ';
+            }else if($last_inspection['kondisi'] == 'severely stunted'){
+                $foodSuggestions = '
+                <ul>
+                    <li>Pastikan balita mendapatkan cukup protein dari sumber seperti daging tanpa lemak, ayam, ikan, telur, dan kacang-kacangan.</li>
+                    <li>Makanan seperti hati, kacang-kacangan, dan biji-bijian mengandung zat besi yang baik untuk membantu meningkatkan kadar hemoglobin dalam darah.</li>
+                    <li>Produk susu rendah lemak atau alternatif yang diperkaya kalsium seperti yogurt dan keju penting untuk pertumbuhan tulang yang baik.</li>
+                    <li>Pastikan balita mendapatkan cukup vitamin dan serat dari sayuran hijau gelap dan buah-buahan. Ini dapat membantu meningkatkan asupan nutrisi mereka.</li>
+                    <li>Dokter anak atau ahli gizi mungkin merekomendasikan minyak ikan atau suplemen omega-3 sebagai bagian dari perawatan nutrisi untuk membantu pemulihan pertumbuhan.</li>
+                </ul>
+                ';
+            }
+        }
+
+        $status = [
+            'kondisi' => $last_inspection['kondisi'],
+            'food_suggestions' => $foodSuggestions
+        ];
+
         $pdf = PDF::loadView('pdf.detail', [
             'identitas_bayi' => $identitas_bayi,
             'last_inspection' => $last_inspection,
             'all_inspection' => $all_inspection,
+            'status' => $status
         ]);
         $pdf->setPaper('a5', 'portrait');
         // return $pdf->stream();
@@ -154,4 +412,6 @@ class hasilPemeriksaanController extends Controller
         return $pdf->download($nama_file);
         // return "tes";
     }
+
+
 }
