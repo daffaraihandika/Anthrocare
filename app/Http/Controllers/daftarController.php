@@ -19,7 +19,6 @@ class daftarController extends Controller
         ]);
     }
 
-    
     public function showAddParent(){
         return view('daftar/addParent',[
             "title" => "Add Parent",
@@ -59,9 +58,9 @@ class daftarController extends Controller
             'gol_darah' => $request->gol_darah,
             'no_telp' => $request->no_telp
         ];
-        
+
         Parents::Create($data);
-        
+
         return redirect()->to('daftar')->with("succes", "Berhasil Menambahkan Data Orang Tua");
     }
 
@@ -122,61 +121,4 @@ class daftarController extends Controller
         Parents::where('id', $parent_id)->delete();
         return back()->with("success", "Berhasil Menghapus Data Orangtua");
     }
-
-    // function buat api 
-    public function getOrtu(){
-        $data_ortu = Parents::orderBy('id', 'desc')->paginate(10); // get data with pagination
-        
-        return $data_ortu;
-    }
-
-    public function getAddInfant($parent_id){
-        $namaOrangTua = Parents::where("id", $parent_id)->pluck('id')->first(); // ngambil data nama orang tua
-        return $namaOrangTua;
-    }
-
-    public function createParent(Request $request){
-        // Validate
-        $message = [
-            'nama_orangtua.required' => 'Nama wajib diisi',
-            'tgl_lahir_orangtua.required' => 'Tanggal lahir wajib diisi',
-            'alamat.required' => 'Alamat wajib diisi',
-            'no_ktp.required' => 'No KTP wajib diisi',
-            'no_ktp.unique' => 'No KTP sudah terdaftar',
-            'gol_darah.required' => 'Golongan darah wajib diisi',
-            'no_telp.required' => 'No telepon wajib diisi',
-        ];
-
-        $request->validate(
-            [
-                'nama_orangtua' => 'required',
-                'tgl_lahir_orangtua' => 'required',
-                'alamat' => 'required',
-                'no_ktp' => 'required|unique:parents',
-                'gol_darah' => 'required',
-                'no_telp' => 'required'
-            ],
-            $message
-        );
-
-        // insert to Database
-        $data = [
-            'nama_orangtua' => $request->nama_orangtua,
-            'tgl_lahir_orangtua' => $request->tgl_lahir_orangtua,
-            'alamat' => $request->alamat,
-            'no_ktp' => $request->no_ktp,
-            'gol_darah' => $request->gol_darah,
-            'no_telp' => $request->no_telp
-        ];
-        
-        Parents::Create($data);
-        
-        return [
-            "status" => 1,
-            "data" => $data,
-            "msg" => "Berhasil menambahkan data orang tua"
-        ];
-        // return redirect()->to('daftar')->with("succes", "Berhasil Menambahkan Data Orang Tua");
-    }
-
 }
