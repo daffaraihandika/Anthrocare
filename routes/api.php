@@ -22,5 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //Daftar routes
+
+// Orang tua
 Route::get('/daftar', [daftarController::class, 'getOrtu']); 
+Route::post('/daftar/add-parent', [DaftarController::class, 'createParent'])->name('daftar.add-parent'); // submit untuk mendaftarkan orangtua baru
+
+
+// Bayi
 Route::get('/daftar/add-infant/{infant:parent_id}', [daftarController::class, 'getAddInfant'])->name('daftar.show-infant');
