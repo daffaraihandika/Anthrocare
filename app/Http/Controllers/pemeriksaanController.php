@@ -112,4 +112,20 @@ class pemeriksaanController extends Controller
         return back()->with("success", "Berhasil Menghapus Data Bayi");
     }
     
+    // api
+
+    public function getPemeriksaan(){
+        $title = 'Pemeriksaan';
+        $data_bayi = Infant::with('parents')->orderBy('id', 'desc')->paginate(10); // get data with pagination
+    
+        return $data_bayi;
+    }
+
+    public function deleteInfantapi($id){
+        Infant::where('id', $id)->delete();
+        return [
+            "message" => "Berhasil menghapus data bayi"
+        ];
+    }
+
 }

@@ -46,4 +46,48 @@ class LoginController extends Controller
         return redirect('/');
         // return "tess masuk logout";
     }
+
+
+    // API
+    /**
+     * Login api
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function apilogin(Request $request){
+        Session::flash('username', $request->username);
+        
+        $message = [
+            'username.required' => 'Username wajib diisi',
+            'password.required' => 'Password wajib diisi',
+        ];
+        
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ], $message);
+
+        $info_login = [
+            'username' => $request->username,
+            'password' => $request->password
+        ];
+
+        if(Auth::attempt($info_login)){
+            return response()->json([
+                'message' => 'Login Bershasil'
+            ]);
+        }else{
+            return response()->json([
+                'message' => 'Login Gagal'
+            ], 401);
+        }
+    }
+
+    public function apilogout(){
+        Auth::logout();
+
+        return response()->json([
+            'message' => 'Logout Berhasil'
+        ]);
+    }
 }
