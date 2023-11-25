@@ -48,3 +48,7 @@ h1 {
 .title-home{
     font-weight: bold;
 }
+
+#my_dataviz {
+    overflow: hidden;
+  }
