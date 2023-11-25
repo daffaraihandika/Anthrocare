@@ -92,6 +92,9 @@
     <td>{{$last_inspection->zscore}}</td>
     <td>{{$last_inspection->kondisi}}</td>
   </tr>
+  <tr>
+    <td colspan="6">Saran Makanan :{!! $status['food_suggestions'] !!}</td>
+  </tr>
 </table>
 
 <h3>Riwayat Pemeriksaan</h3>

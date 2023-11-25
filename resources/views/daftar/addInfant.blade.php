@@ -35,7 +35,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="tgl_lahir_bayi" class="form-label">Tanggal Lahir</label>
-                    <input id="tgl_lahir_bayi" type="date" class="form-control @error('tgl_lahir_bayi') is-invalid @enderror" placeholder="Tanggal Lahir" name="tgl_lahir_bayi" value="{{ old('tgl_lahir_bayi') }}">
+                    <input id="tgl_lahir_bayi" type="date" class="form-control @error('tgl_lahir_bayi') is-invalid @enderror "placeholder="Tanggal Lahir" name="tgl_lahir_bayi" value="{{ old('tgl_lahir_bayi') }}">
                     @error('tgl_lahir_bayi') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-3">
@@ -56,12 +56,12 @@
                 </div>
                 <div class="mb-3">
                     <label for="tinggi_lahir" class="form-label">Tinggi Lahir (cm)</label>
-                    <input id="tinggi_lahir" type="number" class="form-control @error('tinggi_lahir') is-invalid @enderror" placeholder="Tinggi Lahir" name="tinggi_lahir" value="{{ old('tinggi_lahir') }}">
+                    <input id="tinggi_lahir" type="text" class="form-control @error('tinggi_lahir') is-invalid @enderror" placeholder="Tinggi Lahir" name="tinggi_lahir" value="{{ old('tinggi_lahir') }}">
                     @error('tinggi_lahir') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>                     
                 <div class="mb-3">
                     <label for="berat_lahir" class="form-label">Berat Lahir (kg)</label>
-                    <input id="berat_lahir" type="number" class="form-control @error('berat_lahir') is-invalid @enderror" placeholder="Berat Lahir" name="berat_lahir" value="{{ old('berat_lahir') }}">
+                    <input id="berat_lahir" type="text" class="form-control @error('berat_lahir') is-invalid @enderror" placeholder="Berat Lahir" name="berat_lahir" value="{{ old('berat_lahir') }}">
                     @error('berat_lahir') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
             </div>

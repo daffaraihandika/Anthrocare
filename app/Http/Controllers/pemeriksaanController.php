@@ -59,6 +59,27 @@ class pemeriksaanController extends Controller
         return redirect()->back()->with('success', 'Data berhasil dikirim ke alat Anthrocare');
         // return $temp;
     }
+
+    public function getData($id) {
+        $title = "Pemeriksaan";
+        $identitas_bayi = Infant::join('parents', 'infants.id_parent', '=', 'parents.id')
+        ->where('infants.id', $id)
+        ->select('infants.id' ,'infants.nama_bayi', 'infants.jenis_kelamin', 'infants.tgl_lahir_bayi', 'infants.no_akte_bayi', 'infants.usia', 'parents.nama_orangtua')
+        ->get();
+    
+        $result = Temporary::select(
+                'temporaries.suhu',
+                'temporaries.berat',
+                'temporaries.panjang_badan',
+                'temporaries.zscore',
+            )
+            ->orderBy('temporaries.created_at', 'desc')
+            ->first();
+    
+        // return $result;
+        // return $result;
+        return view('pemeriksaan/getData', compact('title', 'identitas_bayi', 'result'));
+    }    
     
 
     // method untuk tombol send
@@ -79,9 +100,10 @@ class pemeriksaanController extends Controller
                 $data['kondisi'] = 'severely stunted';
             }
 
-            Pemeriksaan::create($data);
             // return $data;
-            return redirect()->to('hasilPemeriksaan/detail/'.$data['id_infant'])->with("succes", "Berhasil Menambahkan Data Orang Tua");
+            Pemeriksaan::create($data);
+            // // return $data;
+            return redirect()->to('hasilPemeriksaan/detail/'.$data['id_infant'])->with("success", "Berhasil Menambahkan Data Orang Tua");
             // return $data;
     }
 
@@ -90,4 +112,20 @@ class pemeriksaanController extends Controller
         return back()->with("success", "Berhasil Menghapus Data Bayi");
     }
     
+    // api
+
+    public function getPemeriksaan(){
+        $title = 'Pemeriksaan';
+        $data_bayi = Infant::with('parents')->orderBy('id', 'desc')->paginate(10); // get data with pagination
+    
+        return $data_bayi;
+    }
+
+    public function deleteInfantapi($id){
+        Infant::where('id', $id)->delete();
+        return [
+            "message" => "Berhasil menghapus data bayi"
+        ];
+    }
+
 }

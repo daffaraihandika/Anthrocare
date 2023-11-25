@@ -29,4 +29,11 @@
             </li>
         </ul>
     </div>
+
+    <form action="{{ url('/logout') }}" method="POST">
+        @csrf
+        <div style="position: absolute; bottom: 30px;" class="bg-dark p-2">
+            <button type="submit" class="btn btn-outline-light btn-block">Logout</button>
+        </div>
+    </form>
 </div>
