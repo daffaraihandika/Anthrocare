@@ -34,46 +34,50 @@
         </div>
     </div>
 </div>
-
-<table class="table">
-    <thead>
-        <tr class="text-center">
-            <th scope="col">No</th>
-            <th scope="col">Nama Orang Tua</th>
-            <th scope="col">KTP Orang Tua</th>
-            <th scope="col">Alamat</th>
-            <th scope="col">Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php $i = $data_ortu->firstItem() ?> 
-        @foreach ($data_ortu as $item)
-        <tr class="text-center">
-            <td>{{ $i }}</td>
-            <td>{{ $item->nama_orangtua }}</td>
-            <td>{{ $item->no_ktp }}</td>
-            <td>{{ $item->alamat }}</td>
-            <td>
-                <a href="{{ url('daftar/add-infant/'.$item->id) }}" class="btn mb-2 mb-xl-0">
-                    <button class="btn btn-primary">Tambah Bayi</button>
-                </a>
-
-                <form action="{{ url('daftar/'.$item->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Apakah anda yakin ingin menghapus data orangtua dengan nama {{ $item->nama_orangtua }}?')">
-                    @csrf
-                    @method("DELETE")
-                    <button class="btn btn-danger mb-2 mb-xl-0">
-                        Hapus
-                    </button>
-                </form>
-                {{-- <a href="" class="btn mb-2 mb-xl-0">
-                    <i class="bi bi-archive-fill text-danger"></i>
-                </a> --}}
-            </td>
-        </tr>
-        <?php $i++ ?>
-        @endforeach
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">No</th>
+                <th scope="col">Nama Orang Tua</th>
+                <th scope="col">KTP Orang Tua</th>
+                <th scope="col">Alamat</th>
+                <th scope="col">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $i = $data_ortu->firstItem() ?> 
+            @foreach ($data_ortu as $item)
+            <tr class="text-center bg-blue">
+                <td>{{ $i }}</td>
+                <td>{{ $item->nama_orangtua }}</td>
+                <td>{{ $item->no_ktp }}</td>
+                <td>{{ $item->alamat }}</td>
+                <td>
+                    <a href="{{ url('daftar/add-infant/'.$item->id) }}" class="btn mb-2 mb-xl-0">
+                        <button class="btn btn-primary">Tambah Bayi</button>
+                    </a>
+    
+                    <form action="{{ url('daftar/'.$item->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Apakah anda yakin ingin menghapus data orangtua dengan nama {{ $item->nama_orangtua }}?')">
+                        @csrf
+                        @method("DELETE")
+                        <button class="btn btn-danger mb-2 mb-xl-0">
+                            Hapus
+                        </button>
+                    </form>
+                    {{-- <a href="" class="btn mb-2 mb-xl-0">
+                        <i class="bi bi-archive-fill text-danger"></i>
+                    </a> --}}
+                </td>
+            </tr>
+            <tr id="spacing-row">
+                <td></td>
+            </tr>
+            <?php $i++ ?>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 
     {{ $data_ortu->links() }}
 

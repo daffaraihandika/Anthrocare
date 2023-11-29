@@ -5,25 +5,29 @@
         </a>
 
         <ul class="nav nav-pills flex-column mt-4">
-            <li class="nav-item">
+            <li class="nav-item ">
                 <a href="/" class="nav-link text-white {{ $title === 'Home' ? 'active' : '' }}" aria-current="page">
+                    <i class="bi bi-house-door-fill"></i>
                     Home
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/daftar" class="nav-link text-white {{ $title === 'Daftar' ? 'active' : '' }}">
+                    <i class="bi bi-person-fill-add"></i>
                     Pendaftaran
                 </a>
                 
             </li>
             <li class="nav-item">
                 <a href="/pemeriksaan" class="nav-link text-white {{ $title === 'Pemeriksaan' ? 'active' : '' }}">
+                    <i class="bi bi-search-heart-fill"></i>
                     Pemeriksaan Balita
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/hasilPemeriksaan"
                     class="nav-link text-white {{ $title === 'Hasil Pemeriksaan' ? 'active' : '' }}">
+                    <i class="bi bi-printer-fill"></i>
                     Hasil Pemeriksaan
                 </a>
             </li>

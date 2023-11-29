@@ -10,6 +10,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
@@ -38,6 +40,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
+    <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/sidebarmenu.js') }}"></script>
+    <script src="{{ asset('assets/js/app.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('assets/libs/simplebar/dist/simplebar.js') }}"></script>
+    <script src="{{ asset('/assets/js/dashboard.js') }}"></script>
 </body>
 
 </html>

@@ -1,13 +1,14 @@
 @extends('layouts.main')
 
 @section('container')
-    <h2>Selamat Datang di Website Anthrocare</h2>
-    <p>Website ini merupakan alat yang dirancang khusus untuk membantu tenaga medis memantau dan mencatat pemeriksaan stunting pada balita dengan menggunakan antropometer. Website ini menyediakan fitur yang praktis dan efisien untuk mencatat data perkembangan balita. Dengan bantuan website ini, para tenaga medis dapat memberikan perawatan yang lebih baik dan tepat untuk mengatasi masalah stunting dan mendukung pertumbuhan yang sehat pada balita.</p>
 
+
+<h2>Selamat Datang di Website Anthrocare</h2>
+<p>Website ini merupakan alat yang dirancang khusus untuk membantu tenaga medis memantau dan mencatat pemeriksaan stunting pada balita dengan menggunakan antropometer. Website ini menyediakan fitur yang praktis dan efisien untuk mencatat data perkembangan balita. Dengan bantuan website ini, para tenaga medis dapat memberikan perawatan yang lebih baik dan tepat untuk mengatasi masalah stunting dan mendukung pertumbuhan yang sehat pada balita.</p>        
     <div class="row">
         <div class="col-md-6 border border-3 rounded px-3 py-3 mx-auto mb-3">
             {{-- cara penggunaan --}}
-            <h2 class="title-home">Cara Kerja Anthrocare :</h2>
+            <h3 class="title">Cara Kerja Anthrocare :</h>
             <ol>
                 <li>Orang tua mendaftarkan identitas orang tua dan bayi pada website dibantu oleh petugas</li>
                 <li>Jika bayi telah terdaftar maka bayi tersebut bisa langsung diperiksa menggunakan alat Anthrocare</li>
@@ -20,38 +21,43 @@
                 <li>Website dapat menghasilkan file pdf dari hasil pemeriksaan balita yang dicetak oleh petugas.</li>
             </ol>
         </div>
+
         <div class="col-md-6">
-            <div class="row border border-3 rounded px-3 py-3 mx-auto mb-3">
-                {{-- orang tua --}}
-                <div class="col-md-3">
-                    {{-- icon --}}
-                    <img src="{{ asset('img/parent.png') }}" alt="" style="width: 100%">
-                </div>
-                <div class="col-md-9">
-                    <div class="row">
-                        <p class="title-home">Data Orang Tua Yang Telah Terdaftar</p>
+            <a href="/daftar" class="text-decoration-none">
+                <div class="row border border-3 rounded px-3 py-3 mx-auto mb-3" style="">
+                    {{-- orang tua --}}
+                    <div class="col-md-3">
+                        {{-- icon --}}
+                        <img src="{{ asset('img/parent.png') }}" alt="" style="width: 100%">
                     </div>
-                    <div class="row">
-                        <p class="subtitle-home">{{ $jumlah_data_parent }} Orang Tua</p>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <h3 class="title-home">Data Orang Tua Yang Telah Terdaftar</h3>
+                        </div>
+                        <div class="row">
+                            <p class="subtitle-home" style="color: black">{{ $jumlah_data_parent }} Orang Tua</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             
-            <div class="row border border-3 rounded px-3 py-3 mx-auto mb-3">
-                {{-- bayi --}}
-                <div class="col-md-3">
-                    {{-- icon --}}
-                    <img src="{{ asset('img/infant.png') }}" alt="" style="width: 100%">
-                </div>
-                <div class="col-md-9">
-                    <div class="row">
-                        <p class="title-home">Data Bayi Yang Telah Terdaftar</p>
+            <a href="/pemeriksaan" class="text-decoration-none">
+                <div class="row border border-3 rounded px-3 py-3 mx-auto mb-3">
+                    {{-- bayi --}}
+                    <div class="col-md-3">
+                        {{-- icon --}}
+                        <img src="{{ asset('img/infant.png') }}" alt="" style="width: 100%">
                     </div>
-                    <div class="row">
-                        <p class="subtitle-home">{{ $jumlah_data_infant }} Bayi</p>
+                    <div class="col-md-9">
+                        <div class="row">
+                            <h3 class="title-home">Data Bayi Yang Telah Terdaftar</h3>
+                        </div>
+                        <div class="row">
+                            <p class="subtitle-home" style="color: black">{{ $jumlah_data_infant }} Bayi</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 @endsection

@@ -8,12 +8,28 @@ body {
     background-color: #fff;
     overflow-x: hidden;
     height: auto;
-    font-family: 'Poppins', sans-serif;
 }
 
-.h2{
-    color: #333;
-	font-size: 2.9rem;
+h2{
+    font-family: 'Poppins', sans-serif;
+	color: #333;
+	font-size: 30px;
+}
+
+h3{
+    font-family: 'Poppins', sans-serif;
+	color: #333;
+	font-size: 24px;
+}
+
+p{
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+ol li{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
 }
 
 .content {
@@ -187,5 +203,63 @@ body {
     .form-container .form-horizontal{
         width: 100%;
         margin: 0;
+    }
+}
+
+thead {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bolder;
+    font-size: 20px;
+    color: #666
+}
+.name {
+    display: inline-block
+}
+
+.bg-blue {
+    background-color: #EBF5FB;
+    border-radius: 8px
+}
+
+.fa-check,
+.fa-minus {
+    color: blue
+}
+
+.bg-blue:hover {
+    background-color: #3e64ff;
+    color: #eee;
+    cursor: pointer
+}
+
+.bg-blue:hover .fa-check,
+.bg-blue:hover .fa-minus {
+    background-color: #3e64ff;
+    color: #eee
+}
+
+.table thead th,
+.table td {
+    border: none
+}
+
+.table tbody td:first-child {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px
+}
+
+.table tbody td:last-child {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px
+}
+
+#spacing-row {
+    height: 10px
+}
+
+@media(max-width:575px) {
+    .container {
+        width: 125%;
+        padding: 20px 10px
     }
 }

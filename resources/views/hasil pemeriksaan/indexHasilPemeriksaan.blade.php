@@ -11,47 +11,59 @@
         </ol>
     </div>
 
+    <div class="row">
+        <div class="col-md-9">
+            <label for="searchInput" class="form-label">Cari berdasarkan nama/akte/nama orang tua/ktp :</label>
+
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" id="searchInput" placeholder="Enter name">
+        </div>
+    </div>
 <div class="mb-3">
-    <label for="searchInput" class="form-label">Cari berdasarkan nama/akte/nama orang tua/ktp :</label>
-    <input type="text" class="form-control" id="searchInput" placeholder="Enter name">
 </div>
 
-<table class="table">
-    <thead>
-        <tr class="text-center">
-            <th scope="col">No</th>
-            <th scope="col">Nama Bayi</th>
-            <th scope="col">Akte</th>
-            <th scope="col">Tanggal Lahir Bayi</th>
-            <th scope="col">JK</th>
-            <th scope="col">Nama Orang Tua</th>
-            <th scope="col">KTP Orang Tua</th>
-            <th tanggal_lahir_bayi="col">Aksi</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php $i = $data_bayi->firstItem() ?>
-        @foreach ($data_bayi as $item)
-        <tr class="text-center">
-            <td>{{ $i }}</td>
-            <td>{{$item->nama_bayi}}</td>
-            <td>{{$item->no_akte_bayi}}</td>
-            <td>{{$item->tgl_lahir_bayi}}</td>
-            <td>{{$item->jenis_kelamin}}</td>
-            <td>{{ $item->nama_orangtua }}</td>
-            <td>{{ $item->no_ktp }}</td>
-            <td>
-                <a href="{{ url('hasilPemeriksaan/detail/'.$item->id_infant) }}" class="btn mb-2 mb-xl-0">
-                    <button class="btn btn-primary">
-                        Detail
-                    </button>
-                </a>
-            </td>
-        </tr>
-        <?php $i++ ?>
-        @endforeach
-    </tbody>
-</table>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">No</th>
+                <th scope="col">Nama Bayi</th>
+                <th scope="col">Akte</th>
+                <th scope="col">Tanggal Lahir Bayi</th>
+                <th scope="col">JK</th>
+                <th scope="col">Nama Orang Tua</th>
+                <th scope="col">KTP Orang Tua</th>
+                <th tanggal_lahir_bayi="col">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $i = $data_bayi->firstItem() ?>
+            @foreach ($data_bayi as $item)
+            <tr class="text-center bg-blue">
+                <td>{{ $i }}</td>
+                <td>{{$item->nama_bayi}}</td>
+                <td>{{$item->no_akte_bayi}}</td>
+                <td>{{$item->tgl_lahir_bayi}}</td>
+                <td>{{$item->jenis_kelamin}}</td>
+                <td>{{ $item->nama_orangtua }}</td>
+                <td>{{ $item->no_ktp }}</td>
+                <td>
+                    <a href="{{ url('hasilPemeriksaan/detail/'.$item->id_infant) }}" class="btn mb-2 mb-xl-0">
+                        <button class="btn btn-primary">
+                            Detail
+                        </button>
+                    </a>
+                </td>
+            </tr>
+            <tr id="spacing-row">
+                <td></td>
+            </tr>
+            <?php $i++ ?>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 
 {{ $data_bayi->links() }}
 
