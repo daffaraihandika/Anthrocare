@@ -107,8 +107,16 @@ class pemeriksaanController extends Controller
             // return $data;
     }
 
-    public function deleteInfant($id){
+    public function deleteInfant($id) {
+        // Hapus catatan terkait dalam tabel temporaries
+        Temporary::where('id_infant', $id)->delete();
+    
+        // Hapus catatan terkait dalam tabel pemeriksaan
+        Pemeriksaan::where('id_infant', $id)->delete();
+    
+        // Setelah itu, Anda dapat menghapus catatan Infant
         Infant::where('id', $id)->delete();
+    
         return back()->with("success", "Berhasil Menghapus Data Bayi");
     }
     
