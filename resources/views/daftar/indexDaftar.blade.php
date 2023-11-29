@@ -26,8 +26,7 @@
             <h3>
                 <a href="{{ url('daftar/add-parent') }}">
                     <button class="btn btn-primary">
-                        <i class="bi bi-plus-square-fill"></i>
-                        Tambah Orang Tua
+                        <span>Tambah Orang Tua</span>
                     </button>
                 </a>
             </h3>
@@ -61,9 +60,7 @@
                     <form action="{{ url('daftar/'.$item->id) }}" class="d-inline" method="POST" onsubmit="return confirm('Apakah anda yakin ingin menghapus data orangtua dengan nama {{ $item->nama_orangtua }}?')">
                         @csrf
                         @method("DELETE")
-                        <button class="btn btn-danger mb-2 mb-xl-0">
-                            Hapus
-                        </button>
+                        <i class="fa fa-trash btn" style="color: #ff0000;"></i>
                     </form>
                     {{-- <a href="" class="btn mb-2 mb-xl-0">
                         <i class="bi bi-archive-fill text-danger"></i>

@@ -20,9 +20,9 @@
     <form action="{{ route('daftar.add-parent') }}" method="POST">
         @csrf
         <div class="row daftar">
+            <h3 class="title">Biodata Orang Tua</h3>
             <div class="col-md-6">
                 {{-- Form orang tua --}}
-                <h3 class="title">Biodata Orang Tua</h3>
                 <div class="mb-3">
                     <label for="nama_orangtua" class="form-label">Nama</label>
                     <input id="nama_orangtua" type="text" class="form-control @error('nama_orangtua') is-invalid @enderror" placeholder="Nama" name="nama_orangtua" value="{{ old('nama_orangtua') }}">
@@ -38,6 +38,8 @@
                     <input id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror" placeholder="Alamat" name="alamat" value="{{ old('alamat') }}">
                                     @error('alamat') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
+            </div>
+            <div class="col-md-6">
                 <div class="mb-3">
                     <label for="no_ktp" class="form-label">No. KTP</label>
                     <input id="no_ktp" type="number" class="form-control @error('no_ktp') is-invalid @enderror" placeholder="No KTP" name="no_ktp" value="{{ old('no_ktp') }}">
@@ -58,13 +60,13 @@
                 </div>                      
                 <div class="mb-3">
                     <label for="no_telp" class="form-label">No. Telepon</label>
-                    <input id="no_telp" type="text" class="form-control @error('no_telp') is-invalid @enderror" placeholder="No Telpun" name="no_telp" value="{{ old('no_telp') }}">
+                    <input id="no_telp" type="text" class="form-control @error('no_telp') is-invalid @enderror" placeholder="No Telpon" name="no_telp" value="{{ old('no_telp') }}">
                                     @error('no_telp') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
             </div>
             
             <div class="mb-4">
-                <button class="btn btn-primary btn-daftarSubmit" type="submit">Submit</button>
+                <button class="btn btn-primary btn-daftarSubmit" type="submit"><span>Submit</span></button>
             </div>
         </div>
     </form>
