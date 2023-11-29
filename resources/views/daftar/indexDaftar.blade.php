@@ -3,7 +3,7 @@
 @section('container')
 <div class="row">
     <div class="col">
-        <h1>Daftar Orang Tua</h1>
+        <h2>Daftar Orang Tua</h2>
     </div>
     <div class="col d-flex justify-content-end align-items-end" >
         <ol class="breadcrumb">
