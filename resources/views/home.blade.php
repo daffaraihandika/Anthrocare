@@ -1,13 +1,13 @@
 @extends('layouts.main')
 
 @section('container')
-    <h1>Selamat Datang di Website Anthrocare</h1>
+    <h2>Selamat Datang di Website Anthrocare</h2>
     <p>Website ini merupakan alat yang dirancang khusus untuk membantu tenaga medis memantau dan mencatat pemeriksaan stunting pada balita dengan menggunakan antropometer. Website ini menyediakan fitur yang praktis dan efisien untuk mencatat data perkembangan balita. Dengan bantuan website ini, para tenaga medis dapat memberikan perawatan yang lebih baik dan tepat untuk mengatasi masalah stunting dan mendukung pertumbuhan yang sehat pada balita.</p>
 
     <div class="row">
         <div class="col-md-6 border border-3 rounded px-3 py-3 mx-auto mb-3">
             {{-- cara penggunaan --}}
-            <span class="title-home">Cara Kerja Anthrocare :</span>
+            <h2 class="title-home">Cara Kerja Anthrocare :</h2>
             <ol>
                 <li>Orang tua mendaftarkan identitas orang tua dan bayi pada website dibantu oleh petugas</li>
                 <li>Jika bayi telah terdaftar maka bayi tersebut bisa langsung diperiksa menggunakan alat Anthrocare</li>
