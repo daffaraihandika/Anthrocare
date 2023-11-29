@@ -23,7 +23,7 @@ return new class extends Migration
             $table->double('berat', 8, 2)->nullable();
             $table->double('panjang_badan', 8, 2)->nullable();
             // $table->enum('kondisi', ['tinggi', 'normal', 'stunted', 'severely stunted'])->nullable();
-            $table->foreign('id_infant')->references('id')->on('infants');
+            $table->foreign('id_infant')->references('id')->on('infants')->onDelete('cascade');
             $table->timestamps();
         });
     }
