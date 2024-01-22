@@ -77,19 +77,19 @@
             </div>
             <div class="mb-3">
                 <label for="berat" class="form-label">Berat Badan (kg)</label>
-                <input type="text" class="form-control" id="berat" aria-describedby="" name="berat" disabled>
+                <input type="text" class="form-control" id="berat" aria-describedby="" name="berat" >
             </div>
             <div class="mb-3">
                 <label for="panjang_badan" class="form-label">Panjang Badan (cm)</label>
-                <input type="text" class="form-control" id="panjang_badan" aria-describedby="" name="panjang_badan" disabled>
+                <input type="text" class="form-control" id="panjang_badan" aria-describedby="" name="panjang_badan" >
             </div>
             <div class="mb-3">
                 <label for="suhu" class="form-label">Suhu (celcius)</label>
-                <input type="text" class="form-control" id="suhu" aria-describedby="" name="suhu" disabled>
+                <input type="text" class="form-control" id="suhu" aria-describedby="" name="suhu" >
             </div>
             <div class="mb-3">
                 <label for="zscore" class="form-label">Z-Score (SD)</label>
-                <input type="text" class="form-control" id="zscore" aria-describedby="" name="zscore" disabled>
+                <input type="text" class="form-control" id="zscore" aria-describedby="" name="zscore" >
             </div>
         </div>
         <div class="mb-3">
